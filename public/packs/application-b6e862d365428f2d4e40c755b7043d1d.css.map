@@ -1,0 +1,1 @@
+{"version":3,"file":"application-b6e862d365428f2d4e40c755b7043d1d.css","sources":["webpack:///./app/javascript/stylesheets/application.scss"],"sourcesContent":[".hello-world {\n  color: red;\n}\n\n\n// WEBPACK FOOTER //\n// ./app/javascript/stylesheets/application.scss"],"mappings":"AAAA;AACA;","sourceRoot":""}
