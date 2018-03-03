@@ -10,3 +10,5 @@
 require.context('../images', true, /\.(png|jpg|jpeg|svg)$/)
 
 import '../stylesheets/application'
+
+console.log('hello, World!')
