@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'dotenv-rails'
+gem "slim-rails"
 
 group :production, :staging do
   gem 'rails_12factor'
