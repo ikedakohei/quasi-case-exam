@@ -16,6 +16,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'dotenv-rails'
 gem "slim-rails"
+gem "html2slim"
 
 group :production, :staging do
   gem 'rails_12factor'
