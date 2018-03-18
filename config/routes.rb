@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root 'pages#index'
+  root 'projects#index'
   get  'login', to: 'sessions#new'
 end
