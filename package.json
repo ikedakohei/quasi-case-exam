@@ -4,8 +4,10 @@
   "dependencies": {
     "@rails/webpacker": "^3.2.2",
     "bootstrap": "4.0.0-beta",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
-    "popper.js": "^1.14.0"
+    "popper.js": "^1.14.0",
+    "resolve-url-loader": "^2.3.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^2.11.1"
