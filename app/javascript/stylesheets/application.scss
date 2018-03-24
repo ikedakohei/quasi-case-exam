@@ -6,14 +6,6 @@
   font-size: 20px;
 }
 
-/* mixins, variables, etc. */
-
-@mixin box_sizing {
-  -moz-box-sizing:    border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
-}
-
 /* universal */
 
 section {
@@ -68,7 +60,6 @@ p {
   margin-top: 45px;
   padding: 20px;
   background-color: #fafafa;
-  @include box_sizing;
 }
 
 /* header */
