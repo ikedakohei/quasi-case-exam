@@ -18,6 +18,7 @@ gem 'dotenv-rails'
 gem 'slim-rails'
 gem 'html2slim'
 gem 'devise'
+gem 'omniauth'
 gem 'omniauth-facebook'
 
 group :production, :staging do
