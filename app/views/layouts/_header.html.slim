@@ -20,8 +20,11 @@ header
             a.dropdown-item[href="#"]
               | メニュー2
             .dropdown-divider
-            a.dropdown-item[href=login_path]
-              | ログイン
+            - if user_signed_in?
+              = link_to 'ログアウト', logout_path, class: "dropdown-item", method: :delete
+            - else
+              a.dropdown-item[href=login_path]
+              = link_to "ログイン", login_path, class: "dropdown-item"
       form.form-inline.my-2.my-lg-0
         input.form-control.mr-sm-2[type="search" placeholder="検索..." aria-label="検索..."]
         button.btn.btn-outline-success.my-2.my-sm-0[type="submit"]
