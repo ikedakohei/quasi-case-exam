@@ -4,6 +4,11 @@
   p
     = Rails.env
     | 環境です。
-  |  <img src="
-  = asset_pack_path 'images/Charlie_Brown.png'
-  | " />
+  = image_tag asset_pack_path('images/Charlie_Brown.png')
+
+  - if user_signed_in?
+    p
+      | ようこそ、
+      = current_user.name
+      | さん!
+    img[src=current_user.image]
