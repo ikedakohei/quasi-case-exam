@@ -1,30 +1,19 @@
 header
   nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    a#logo.navbar-brand[href=root_url]
-      | quasi case
+    = link_to "quasi case", root_url, class: "navbar-brand", id: "logo"
     button.navbar-toggler[type="button" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替"]
       span.navbar-toggler-icon
     #Navber.collapse.navbar-collapse
       ul.navbar-nav.mr-auto
         li.nav-item.active
-          a.my-project.nav-link[href="#"]
-            | マイプロジェクト 
-            span.sr-only
-              | (現位置)
-        li.nav-item.dropdown
-          a#navbarDropdown.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
-            |  メニュー 
-          .dropdown-menu[aria-labelledby="navbarDropdown"]
-            a.dropdown-item[href="#"]
-              | メニュー1
-            a.dropdown-item[href="#"]
-              | メニュー2
-            .dropdown-divider
-            - if user_signed_in?
-              = link_to 'ログアウト', logout_path, class: "dropdown-item", method: :delete
-            - else
-              a.dropdown-item[href=login_path]
-              = link_to "ログイン", login_path, class: "dropdown-item"
+          = link_to "マイプロジェクト", "#", class: "my-project nav-link"
+          span.sr-only
+            | (現位置)
+        li.nav-item.active
+          - if user_signed_in?
+            = link_to 'ログアウト', logout_path, class: "nav-link", method: :delete
+          - else
+            = link_to "ログイン・新規登録", login_path, class: "nav-link"
       form.form-inline.my-2.my-lg-0
         input.form-control.mr-sm-2[type="search" placeholder="検索..." aria-label="検索..."]
         button.btn.btn-outline-success.my-2.my-sm-0[type="submit"]
