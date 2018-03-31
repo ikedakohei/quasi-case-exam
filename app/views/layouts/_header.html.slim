@@ -12,7 +12,7 @@ header
             a#navbarDropdown.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
               |  メニュー
             .dropdown-menu[aria-labelledby="navbarDropdown"]
-              = link_to "メニュー1", "#", class: "dropdown-item"
+              = link_to "マイページ", mypage_path, class: "dropdown-item"
               = link_to "メニュー2", "#", class: "dropdown-item"
               .dropdown-divider
               = link_to "ログアウト", logout_path, class: "dropdown-item", method: :delete
