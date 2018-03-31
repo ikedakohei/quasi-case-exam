@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  root 'projects#index'
-  get  'login', to: 'sessions#new'
+  unauthenticated :user do
+    root to: 'sessions#new'
+  end
+  authenticated :user do
+    root to: 'projects#index'
+  end
+  get  'mypage', to: 'users#edit'
+  resources :users, only: [:update, :destroy]
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   devise_scope :user do
