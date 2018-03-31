@@ -1,2 +1,20 @@
-h1 Users#edit
-p Find me in app/views/users/edit.html.slim
+.row
+  p.col-lg-3.ml-auto
+    = image_tag @user.image, size: "150x150", class: "rounded-circle"
+  .col-lg-6.mr-auto
+    = form_with model: @user do |f|
+      .form-group
+          = f.label :name
+          = f.text_field :name, value: @user.name, class: "form-control"
+      .form-group
+        label.input-group
+          .input-group-btn
+            span.btn.btn-success
+              | 画像を選択
+              = f.file_field :image, class: "file-field-hidden"
+          input.form-control.file-text[type="text" readonly="" placeholder="ファイル名..."]
+      .form-group
+        = f.submit "更新", class: "btn btn-outline-success btn-block"
+    .col-lg-3.offset-3
+    = link_to "ログアウト", logout_path, class: "btn btn-outline-dark mypage-logout-btn"
+    = link_to "退会", "#", class: "btn btn-outline-danger mypage-user-delete-btn"

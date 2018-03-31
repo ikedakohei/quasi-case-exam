@@ -11,5 +11,4 @@ require.context('../images', true, /\.(png|jpg|jpeg|svg)$/)
 
 import '../stylesheets/application'
 import 'bootstrap/dist/js/bootstrap';
-
-console.log('hello, World!')
+import './filefield_text';
