@@ -5,5 +5,5 @@
         h4.center ログイン・新規登録
       .card-body.px-5
         = link_to " Facebook", user_facebook_omniauth_authorize_path, class: "btn btn-primary btn-block fa fa-facebook-official my-3"
-        = link_to " Twitter", '#', class: "btn btn-info btn-block fa fa-twitter-square my-3"
-        = link_to " Github", '#', class: "btn btn-secondary btn-block fa fa-github my-3"
+        = link_to " Twitter",  user_twitter_omniauth_authorize_path,  class: "btn btn-info btn-block fa fa-twitter-square my-3"
+        = link_to " Github",   user_github_omniauth_authorize_path,   class: "btn btn-secondary btn-block fa fa-github my-3"

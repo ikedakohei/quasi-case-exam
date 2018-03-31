@@ -20,6 +20,8 @@ gem 'html2slim'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
 
 group :production, :staging do
   gem 'rails_12factor'
