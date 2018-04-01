@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  def image_file
+  def image_url
     self.image.present? ? image : sns_image
   end
 end
