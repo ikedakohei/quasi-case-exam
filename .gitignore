@@ -24,3 +24,5 @@ yarn-debug.log*
 .yarn-integrity
 
 /.env
+
+/public/uploads
