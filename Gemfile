@@ -22,6 +22,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :production, :staging do
   gem 'rails_12factor'
