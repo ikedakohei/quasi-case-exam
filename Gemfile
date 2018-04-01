@@ -23,7 +23,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'cloudinary'
 
 group :production, :staging do
   gem 'rails_12factor'
