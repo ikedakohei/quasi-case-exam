@@ -8,8 +8,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = I18n.t 'devise.registrations.updated'
-      redirect_to root_url
+      redirect_to root_url, notice: (I18n.t 'devise.registrations.updated')
     else
       render 'edit'
     end
@@ -17,8 +16,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:notice] = I18n.t 'devise.registrations.destroyed'
-    redirect_to root_url
+    redirect_to root_url, notice: (I18n.t 'devise.registrations.destroyed')
   end
 
   private
