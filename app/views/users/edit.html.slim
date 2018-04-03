@@ -1,6 +1,6 @@
 .row
   p.col-lg-3.ml-auto
-    = image_tag @user.image_url, class: "rounded-circle mypage-image"
+    = image_tag @user.image, class: "rounded-circle mypage-image"
   .col-lg-6.mr-auto
     = form_with model: @user do |f|
       .form-group
