@@ -1,6 +1,7 @@
 .row
   p.col-lg-3.ml-auto
-    = image_tag @user.image, class: "rounded-circle mypage-image"
+    span#preview
+    = image_tag @user.image, class: "rounded-circle mypage-image", id: "mypage-avator"
   .col-lg-6.mr-auto
     = form_with model: @user do |f|
       .form-group
@@ -11,7 +12,7 @@
           .input-group-btn
             span.btn.btn-success
               | 画像を選択
-              = f.file_field :image, class: "file-field-hidden"
+              = f.file_field :image, class: "file-field-hidden", id: "mypage-image-form"
               = f.hidden_field :image_cache
           input.form-control.file-text[type="text" readonly="" placeholder="ファイル名..."]
       .form-group
