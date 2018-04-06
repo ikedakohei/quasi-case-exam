@@ -19,4 +19,5 @@
         = f.submit "更新", class: "btn btn-outline-success btn-block"
     .col-lg-3.offset-3
     = link_to "ログアウト", logout_path, class: "btn btn-outline-dark mypage-logout-btn"
-    = link_to "退会", "#", class: "btn btn-outline-danger mypage-user-delete-btn"
+    = link_to "退会", user_path(@user), class: "btn btn-outline-danger mypage-user-delete-btn",
+      method: :delete, data: { confirm: "本当に退会しますか？" }
