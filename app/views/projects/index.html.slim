@@ -1,14 +1,13 @@
-.center
-  p.hello-world
-    | hello, world!
-  p
-    = Rails.env
-    | 環境です。
-  = image_tag asset_pack_path('images/Charlie_Brown.png')
-
-  - if user_signed_in?
-    p
-      | ようこそ、
-      = current_user.name
-      | さん!
-    = image_tag current_user.image, class: "top-page-image"
+.row
+  .col-md-4
+    .card.my-2
+      .card-body.bg-light.p-0
+        = link_to " プロジェクト作成…", "#",
+          class: "project-index-item text-center px-2 py-4 fa fa-plus-square-o"
+  - 1.upto(8) do |n|
+    .col-md-4
+      .card.my-2
+        .card-body.bg-light.p-0
+          = link_to " プロジェクト#{n}", "#",
+            class: "project-index-item text-center px-2 py-4 fa fa-bars"
+  = link_to " もっと見る…", "#", class: "mx-auto my-4 project-more fa fa-chevron-circle-down"
