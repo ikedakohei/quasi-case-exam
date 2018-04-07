@@ -2,8 +2,11 @@
   .mx-auto
     .card.mt-5
       .card-header.px-5.pt-3
-        h4.center ログイン・新規登録
+        h4.text-center ログイン・新規登録
       .card-body.px-5
-        = link_to " Facebook", user_facebook_omniauth_authorize_path, class: "btn btn-primary btn-block fa fa-facebook-official my-3"
-        = link_to " Twitter",  user_twitter_omniauth_authorize_path,  class: "btn btn-info btn-block fa fa-twitter-square my-3"
-        = link_to " Github",   user_github_omniauth_authorize_path,   class: "btn btn-secondary btn-block fa fa-github my-3"
+        = link_to " Facebook", user_facebook_omniauth_authorize_path,
+          class: "btn btn-block page-link text-dark fa fa-facebook-official my-3"
+        = link_to " Twitter",  user_twitter_omniauth_authorize_path,
+          class: "btn btn-block page-link text-dark fa fa-twitter-square my-3"
+        = link_to " Github",   user_github_omniauth_authorize_path,
+          class: "btn btn-block page-link text-dark fa fa-github my-3"

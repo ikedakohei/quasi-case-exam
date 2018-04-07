@@ -1,0 +1,18 @@
+.project-index-item {
+  color: #111;
+  word-wrap: break-word;
+  display: block;
+  &:hover {
+    text-decoration: none;
+    color: #111;
+    background-color:#fff;
+  }
+}
+
+.project-more {
+  color: #888;
+  &:hover {
+    text-decoration: none;
+    color: #111;
+  }
+}

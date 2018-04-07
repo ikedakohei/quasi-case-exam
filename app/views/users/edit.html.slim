@@ -10,14 +10,14 @@
       .form-group
         label.input-group
           .input-group-btn
-            span.btn.btn-success
+            span.btn.btn-dark
               | 画像を選択
               = f.file_field :image, class: "file-field-hidden", id: "mypage-image-form"
               = f.hidden_field :image_cache
           input.form-control.file-text[type="text" readonly="" placeholder="ファイル名..."]
       .form-group
-        = f.submit "更新", class: "btn btn-outline-success btn-block"
+        = f.submit "更新", class: "btn btn-outline-dark btn-block"
     .col-lg-3.offset-3
-    = link_to "ログアウト", logout_path, class: "btn btn-outline-dark mypage-logout-btn"
+    = link_to "ログアウト", logout_path, class: "btn btn-outline-secondary mypage-logout-btn"
     = link_to "退会", user_path(@user), class: "btn btn-outline-danger mypage-user-delete-btn",
       method: :delete, data: { confirm: "本当に退会しますか？" }
