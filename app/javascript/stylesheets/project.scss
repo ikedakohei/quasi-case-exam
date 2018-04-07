@@ -7,6 +7,12 @@
     color: #111;
     background-color:#fff;
   }
+  &.fa-plus-square-o::before {
+    color: #cf464b;
+  }
+  &.fa-bars::before {
+    color: #79caca;
+  }
 }
 
 .project-more {

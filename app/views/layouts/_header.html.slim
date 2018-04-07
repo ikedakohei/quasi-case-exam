@@ -1,6 +1,6 @@
 header
   nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    = link_to "quasi case", root_path, class: "navbar-brand", id: "logo"
+    = link_to "kanban board", root_path, class: "navbar-brand", id: "logo"
     button.navbar-toggler[type="button" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替"]
       span.navbar-toggler-icon
     #Navber.collapse.navbar-collapse
@@ -16,7 +16,8 @@ header
               = link_to "メニュー2", "#", class: "dropdown-item"
               .dropdown-divider
               = link_to "ログアウト", logout_path, class: "dropdown-item"
-      form.form-inline.my-2.my-lg-0
-        input.form-control.mr-sm-2[type="search" placeholder="検索..." aria-label="検索..."]
-        button.btn.page-link.text-dark.my-2.my-sm-0[type="submit"]
-          | 検索
+      - if user_signed_in?
+        form.form-inline.my-2.my-lg-0
+          input.form-control.mr-sm-2[type="search" placeholder="検索..." aria-label="検索..."]
+          button.btn.page-link.text-dark.my-2.my-sm-0[type="submit"]
+            | 検索
