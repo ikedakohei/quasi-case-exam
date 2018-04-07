@@ -7,5 +7,7 @@ development:
   <<: *default
 staging:
   <<: *default
+  secure: true
 production:
   <<: *default
+  secure: true
