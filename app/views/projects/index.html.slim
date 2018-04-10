@@ -4,10 +4,11 @@
       .card-body.bg-light.p-0
         = link_to " プロジェクト作成…", "#",
           class: "project-index-item text-center px-2 py-4 fa fa-plus-square-o"
-  - 1.upto(8) do |n|
+  - @projects.each do |project|
     .col-md-4
       .card.my-2
         .card-body.bg-light.p-0
-          = link_to " プロジェクト#{n}", "#",
+          = link_to project.name, "#",
             class: "project-index-item text-center px-2 py-4 fa fa-bars"
+.row
   = link_to " もっと見る…", "#", class: "mx-auto my-4 project-more fa fa-chevron-circle-down"
