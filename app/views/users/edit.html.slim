@@ -3,7 +3,8 @@
     span#preview
     = image_tag @user.image, class: "rounded-circle mypage-image", id: "mypage-avator"
   .col-lg-6.mr-auto
-    = form_with model: @user, local: true do |f|
+    = form_with(model: @user, url: mypage_path, local: true) do |f|
+      = render 'shared/error_messages'
       .form-group
           = f.label :name
           = f.text_field :name, value: @user.name, class: "form-control"

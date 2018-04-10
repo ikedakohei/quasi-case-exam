@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     root to: 'projects#index'
   end
   get  'mypage', to: 'users#edit'
+  patch 'mypage', to: 'users#update'
   resources :users, only: [:update, :destroy]
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
