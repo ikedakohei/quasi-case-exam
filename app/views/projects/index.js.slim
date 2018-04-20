@@ -1,0 +1,2 @@
+| $('#projects').append("#{escape_javascript(render 'projects', projects: @projects)}");
+| $('#morelink').replaceWith("#{escape_javascript(link_to_next_page(@projects, ' もっと見る…', remote: true, id: 'morelink', class: 'mx-auto my-4 project-more fa fa-chevron-circle-down'))}");

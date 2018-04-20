@@ -1,0 +1,6 @@
+- projects.each do |project|
+  .col-md-4
+    .card.my-2
+      .card-body.bg-light.p-0
+        = link_to " #{project.name}", "#",
+          class: "project-index-item text-center px-2 py-4 fa fa-bars"

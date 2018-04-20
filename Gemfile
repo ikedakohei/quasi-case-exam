@@ -24,6 +24,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-github'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'kaminari'
 
 group :production, :staging do
   gem 'rails_12factor'
