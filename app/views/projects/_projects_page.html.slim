@@ -1,0 +1,10 @@
+.row#projects
+  .col-md-4
+    .card.my-2
+      .card-body.bg-light.p-0
+        = link_to " プロジェクト作成…", "#",
+          class: "project-index-item text-center px-2 py-4 fa fa-plus-square-o"
+  = render 'projects', projects: @projects
+- if @projects_page.total_pages > 0
+  .row
+    = link_to_next_page @projects, ' もっと見る…', remote: true, id: 'morelink', class: 'mx-auto my-4 project-more fa fa-chevron-circle-down'

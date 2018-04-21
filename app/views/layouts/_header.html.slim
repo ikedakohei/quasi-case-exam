@@ -4,19 +4,14 @@ header.sticky-top
     button.navbar-toggler[type="button" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替"]
       span.navbar-toggler-icon
     #Navber.collapse.navbar-collapse
-      ul.navbar-nav.mr-auto
-        - if user_signed_in?
-          li.nav-item.active
-            = link_to "マイプロジェクト", "#", class: "my-project nav-link"
-          li.nav-item.dropdown
-            a#navbarDropdown.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
-              |  メニュー
-            .dropdown-menu[aria-labelledby="navbarDropdown"]
-              = link_to "マイページ", mypage_path, class: "dropdown-item"
-              = link_to "メニュー2", "#", class: "dropdown-item"
-              .dropdown-divider
-              = link_to "ログアウト", logout_path, class: "dropdown-item"
       - if user_signed_in?
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            = link_to "マイプロジェクト", myproject_path, class: "header-link nav-link"
+          li.nav-item.active
+            = link_to "マイページ", mypage_path, class: "header-link nav-link"
+          li.nav-item.active
+            = link_to "ログアウト", logout_path, class: "header-link nav-link"
         form.form-inline.my-2.my-lg-0
           input.form-control.mr-sm-2[type="search" placeholder="検索..." aria-label="検索..."]
           button.btn.page-link.text-dark.my-2.my-sm-0[type="submit"]

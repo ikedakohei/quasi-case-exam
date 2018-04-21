@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :projects
   devise :rememberable, :trackable, :omniauthable, omniauth_providers: %i(facebook twitter github)
 
   def self.from_omniauth(auth)

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: 'projects#index'
   end
+
   get  'mypage', to: 'users#edit'
   patch 'mypage', to: 'users#update'
   resources :users, only: [:update, :destroy]
@@ -13,4 +14,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'logout', to: 'devise/sessions#destroy'
   end
+
+  get 'myproject', to: 'projects#myproject'
+
 end
