@@ -17,6 +17,7 @@ ja:
   notice:
     create_project: プロジェクトを作成しました
     update_project: プロジェクトを更新しました
+    destroy_project: プロジェクトを削除しました
   date:
     abbr_day_names:
     - 日

@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   end
 
   get 'myproject', to: 'projects#myproject'
-  resources :projects, only: [:new, :create, :edit, :update]
+  resources :projects, only: [:new, :create, :edit, :update, :destroy]
 
 end

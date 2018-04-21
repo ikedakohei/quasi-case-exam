@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:edit, :update]
+  before_action :set_project, only: [:edit, :update, :destroy]
 
   def index
     @projects_page = Project.order("created_at").reverse_order.page(params[:page])
@@ -41,6 +41,14 @@ class ProjectsController < ApplicationController
   def update
     if @project.update(project_params)
       redirect_to myproject_path, notice: I18n.t('notice.update_project')
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @project.destroy
+      redirect_to myproject_path, notice: (I18n.t 'notice.destroy_project')
     else
       render :edit
     end
