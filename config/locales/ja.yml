@@ -16,6 +16,8 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
   notice:
     create_project: プロジェクトを作成しました
+    update_project: プロジェクトを更新しました
+    not_your_project: あなたが作成したプロジェクトではないので編集できません
   date:
     abbr_day_names:
     - 日

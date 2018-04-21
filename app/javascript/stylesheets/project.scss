@@ -15,10 +15,26 @@
   }
 }
 
+.project-index-item-edit {
+  font-size: 0.8em;
+  background-color: #79caca;
+  display: block;
+  padding: 2px 0;
+  color: white;
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
+}
+
 .project-more {
   color: #888;
   &:hover {
     text-decoration: none;
     color: #111;
   }
+}
+
+.project-card {
+  width: 500px;
 }

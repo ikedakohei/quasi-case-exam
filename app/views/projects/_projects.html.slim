@@ -4,3 +4,5 @@
       .card-body.bg-light.p-0
         = link_to " #{project.name}", "#",
           class: "project-index-item text-center px-2 py-4 fa fa-bars"
+        - if project.user.id == current_user.id
+          = link_to "編集", edit_project_path(project), class: "project-index-item-edit text-center"
