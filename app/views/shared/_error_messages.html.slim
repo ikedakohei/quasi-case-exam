@@ -1,6 +1,6 @@
-- if @user.errors.any?
+- if error_object.errors.any?
   #error_explanation
     ul.alert.alert-danger
-      - @user.errors.full_messages.each do |msg|
+      - error_object.errors.full_messages.each do |msg|
         li
           = msg

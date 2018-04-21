@@ -20,4 +20,23 @@ class ProjectsController < ApplicationController
       format.js
     end
   end
+
+  def new
+    @project = current_user.projects.build
+  end
+
+  def create
+    @project = current_user.projects.build(project_params)
+    if @project.save
+      redirect_to myproject_path, notice: I18n.t('notice.create_project')
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(:name, :content)
+  end
 end

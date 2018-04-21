@@ -1,0 +1,16 @@
+.row
+  .mx-auto
+    .card.mt-5
+      .card-header.px-5.pt-3
+        h4.text-center 新しいプロジェクトを作成
+      .card-body.px-5
+        = form_with(model: @project, url: projects_path, local: true) do |f|
+          = render 'shared/error_messages', error_object: @project
+          .form-group
+            = f.label :name, "プロジェクト名"
+            = f.text_field :name, class: "form-control"
+          .form-group
+            = f.label :content, "概要"
+            = f.text_area :content, class: "form-control", rows: "10"
+          .form-group
+            = f.submit "作成", class: "btn btn-outline-dark btn-block mt-4"
