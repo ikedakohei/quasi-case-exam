@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:edit, :update, :my_project?]
-  before_action :my_project?, only: [:edit, :update]
+  before_action :set_project, only: [:edit, :update]
 
   def index
     @projects_page = Project.order("created_at").reverse_order.page(params[:page])
@@ -50,16 +49,10 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
   end
 
   def project_params
     params.require(:project).permit(:name, :content)
-  end
-
-  def my_project?
-    unless current_user.id == @project.user.id
-      redirect_to myproject_path, notice: I18n.t('notice.not_your_project')
-    end
   end
 end
