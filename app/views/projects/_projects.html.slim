@@ -1,8 +1,8 @@
 - projects.each do |project|
-  .col-md-4
+  .col-lg-4
     .card.my-2
-      .card-body.bg-light.p-0
-        = link_to " #{project.name}", "#",
-          class: "project-index-item text-center px-2 py-4 fa fa-bars"
+      .card-body.p-0
+        = link_to " #{project.name}", project_path(project),
+          class: "project-index-item text-center px-2 fa fa-bars py-4"
         - if project.user.id == current_user.id
-          = link_to "編集", edit_project_path(project), class: "project-index-item-edit text-center"
+          = link_to "", edit_project_path(project), class: "project-index-item-edit text-center fa fa-pencil-square-o py-1"

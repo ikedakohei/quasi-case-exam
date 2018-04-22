@@ -12,6 +12,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def show
+    @project = Project.find(params[:id])
+  end
+
   def myproject
     @projects_page = current_user.projects.order("created_at").reverse_order.page(params[:page])
     @projects = @projects_page.first_page? ? @projects_page.per(8) : @projects_page.per(9)

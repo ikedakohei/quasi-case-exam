@@ -18,3 +18,9 @@
 .fa-github::before {
   color: #24292e;
 }
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
