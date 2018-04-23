@@ -9,13 +9,16 @@ header {
 #logo {
   float: left;
   font-size: 1.7em;
-  color: #4078c0;
+  color: #fff;
+  text-shadow: 2px 2px 0 #555,
+              -2px 2px 0 #555,
+              2px -2px 0 #555,
+              -2px -2px 0 #555;
   text-transform: uppercase;
   letter-spacing: -1px;
   font-weight: bold;
-}
-
-#logo:hover {
-  color: #4078c0;
-  text-decoration: none;
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
 }
