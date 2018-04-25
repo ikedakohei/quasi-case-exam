@@ -4,12 +4,8 @@ class ProjectsController < ApplicationController
 
   def index
     @projects_page = Project.order("created_at").reverse_order.page(params[:page])
-    @projects = @projects_page.first_page? ? @projects_page.per(8) : @projects_page.per(9)
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    # Find page_per method at project.rb
+    @projects = Project.page_per(@projects_page)
   end
 
   def show
@@ -17,12 +13,8 @@ class ProjectsController < ApplicationController
 
   def myproject
     @projects_page = current_user.projects.order("created_at").reverse_order.page(params[:page])
-    @projects = @projects_page.first_page? ? @projects_page.per(8) : @projects_page.per(9)
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    # Find page_per method at project.rb
+    @projects = Project.page_per(@projects_page)
   end
 
   def new
