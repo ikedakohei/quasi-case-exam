@@ -19,6 +19,7 @@ ja:
     update_project: プロジェクトを更新しました
     destroy_project: プロジェクトを削除しました
     cannot_access_project: こちらのプロジェクトにアクセスする権限がありません
+    not_your_project: あなたが作成したプロジェクトではありません
   date:
     abbr_day_names:
     - 日

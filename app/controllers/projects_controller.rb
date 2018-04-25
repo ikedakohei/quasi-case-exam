@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :my_project?]
+  before_action :my_project?, only: [:edit, :update, :destroy]
 
   # 全プロジェクトを表示
   def index
@@ -50,7 +51,7 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
-    @project = current_user.projects.find(params[:id])
+    @project = Project.find(params[:id])
   end
 
   def set_projects(projects)
@@ -61,5 +62,12 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:name, :content)
+  end
+
+  # 自分が作成したプロジェクトかどうか判断
+  def my_project?
+    unless current_user.id == @project.user_id
+      redirect_to myproject_path, notice: (I18n.t 'notice.not_your_project')
+    end
   end
 end
