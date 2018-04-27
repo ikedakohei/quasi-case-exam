@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   end
 
   get 'myproject', to: 'projects#myproject'
-  resources :projects, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :projects, only: [:show, :new, :create, :edit, :update, :destroy] do
+    resources :columns, only: [:new, :create]
+  end
 end

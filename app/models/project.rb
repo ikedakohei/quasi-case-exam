@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   DEFAULT_PAGE_PER = 9
 
   belongs_to :user
+  has_many :columns, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 140 }
   validates :content, length: { maximum: 300 }

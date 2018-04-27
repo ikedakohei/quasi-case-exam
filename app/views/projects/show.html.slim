@@ -5,9 +5,9 @@
       = link_to "ユーザを招待", "#", class: "btn btn-sm page-link text-dark py-1"
     li.index-show-header-right.mr-3
       = link_to "ログを見る", "#", class: "btn btn-sm page-link text-dark py-1"
-.row.table-responsive
+.row.table-responsive.project-show-table-responsive
   table
-    tbody.
+    tbody
       tr
         td.project-show-td
             .card.project-show-card.mr-2
@@ -104,7 +104,16 @@
             .card-footer.text-center
               = link_to " カードを追加", '#',
                 class: "text-dark fa fa-plus"
+        - @project.columns.each do |column|
+          td.project-show-td
+            .card.project-show-card.mr-2
+              .card-header.text-center 
+                = column.name
+              .card-body.pt-2.project-show-scroll
+              .card-footer.text-center
+                = link_to " カードを追加", '#',
+                  class: "text-dark fa fa-plus"
         td.project-show-td
           .card.project-show-card.mr-2
             .card-header.text-center.border-bottom-0
-             = link_to " カラムを追加", "#", class: "text-dark fa fa-plus"
+              = link_to " カラムを追加", new_project_column_path(@project), class: "text-dark fa fa-plus"

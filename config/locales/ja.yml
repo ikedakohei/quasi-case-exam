@@ -8,6 +8,8 @@ ja:
       project:
         name: プロジェクト名
         content: 概要
+      column:
+        name: カラム名
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
@@ -20,6 +22,7 @@ ja:
     destroy_project: プロジェクトを削除しました
     cannot_access_project: こちらのプロジェクトにアクセスする権限がありません
     not_your_project: あなたが作成したプロジェクトではありません
+    create_column: カラムを作成しました
   date:
     abbr_day_names:
     - 日
