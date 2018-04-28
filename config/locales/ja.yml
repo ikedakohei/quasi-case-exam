@@ -23,6 +23,8 @@ ja:
     cannot_access_project: こちらのプロジェクトにアクセスする権限がありません
     not_your_project: あなたが作成したプロジェクトではありません
     create_column: カラムを作成しました
+    update_column: カラム名を更新しました
+    destroy_column: カラムを削除しました
   date:
     abbr_day_names:
     - 日

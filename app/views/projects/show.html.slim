@@ -104,11 +104,11 @@
             .card-footer.text-center
               = link_to " カードを追加", '#',
                 class: "text-dark fa fa-plus"
-        - @project.columns.each do |column|
+        - @project.columns.order("created_at").each do |column|
           td.project-show-td
             .card.project-show-card.mr-2
               .card-header.text-center 
-                = column.name
+                = link_to column.name, edit_project_column_path(@project, column), class: "text-dark"
               .card-body.pt-2.project-show-scroll
               .card-footer.text-center
                 = link_to " カードを追加", '#',

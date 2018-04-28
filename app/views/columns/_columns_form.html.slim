@@ -1,0 +1,19 @@
+.row
+  .mx-auto
+    .card.mt-5.project-card
+      .card-header.px-5.pt-3
+        h4.text-center 
+          = title
+      .card-body.px-5
+        = form_with(model: column, url: column_form_path, local: true) do |f|
+          = render 'shared/error_messages', error_object: column
+          .form-group
+            = f.label :name, "カラム名"
+            = f.text_field :name, class: "form-control"
+          .form-group
+            = f.submit submit_label, class: "btn btn-outline-dark btn-block mt-4"
+          - if title == "カラムを編集"
+            .form-group
+              = link_to "カラムを削除", project_column_path(project, column),
+                method: :delete, data: { confirm: "本当にカラムを削除しますか？" },
+                class: "btn btn-outline-danger btn-block"

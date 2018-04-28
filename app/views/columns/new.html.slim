@@ -1,13 +1,1 @@
-.row
-  .mx-auto
-    .card.mt-5.project-card
-      .card-header.px-5.pt-3
-        h4.text-center カラムの作成
-      .card-body.px-5
-        = form_with(model: @column, url: project_columns_path, local: true) do |f|
-          = render 'shared/error_messages', error_object: @column
-          .form-group
-            = f.label :name, "カラム名"
-            = f.text_field :name, class: "form-control"
-          .form-group
-            = f.submit "作成", class: "btn btn-outline-dark btn-block mt-4"
+= render 'columns_form', column: @column, title: "カラムを作成", column_form_path: project_columns_path, submit_label: "作成"

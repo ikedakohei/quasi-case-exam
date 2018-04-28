@@ -16,6 +16,6 @@
             = f.submit submit_label, class: "btn btn-outline-dark btn-block mt-4"
           - if title == "プロジェクトを編集"
             .form-group
-              = link_to "プロジェクトを削除", project_path(project), method: :delete,
+              = link_to "プロジェクトを削除", project_path(project),
                 method: :delete, data: { confirm: "本当にプロジェクトを削除しますか？" },
                 class: "btn btn-outline-danger btn-block"
