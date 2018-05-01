@@ -1,6 +1,6 @@
 class ColumnsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:new, :create, :edit, :update, :destroy, :my_project?]
+  before_action :set_project, only: [:new, :create, :edit, :update, :destroy]
   before_action :my_project?, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_column,  only: [:edit, :update, :destroy]
   def new

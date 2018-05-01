@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :my_project?]
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :my_project?, only: [:show, :edit, :update, :destroy]
 
   # 全プロジェクトを表示
