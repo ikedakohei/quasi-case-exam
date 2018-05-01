@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
   # 全プロジェクトを表示
   def index
-    @projects_page = Project.order("created_at").reverse_order.page(params[:page])
+    @projects_page = Project.all.includes(:user).order("created_at").reverse_order.page(params[:page])
     # Find page_per method at project.rb
     @projects = Project.page_per(@projects_page)
   end
@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @columns = @project.columns.order("created_at")
   end
 
   def new
