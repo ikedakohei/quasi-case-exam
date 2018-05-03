@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @columns = @project.columns.order("created_at")
+    @columns = @project.columns.order(order: :asc)
   end
 
   def new

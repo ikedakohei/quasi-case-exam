@@ -9,106 +9,18 @@
   table
     tbody
       tr
-        td.project-show-td
-            .card.project-show-card.mr-2
-              .card-header.text-center カラム1
-              .card-body.pt-2.project-show-scroll
-                = link_to "カードカードカードカードカードカードカードカードカード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-                = link_to "カード", '#',
-                  class: "project-show-item page-link text-dark my-3"
-              .card-footer.text-center
-                = link_to " カードを追加", '#',
-                  class: "text-dark fa fa-plus"
-        td.project-show-td
-          .card.project-show-card.mr-2
-            .card-header.text-center カラム2
-            .card-body.pt-2.project-show-scroll
-              = link_to "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", '#',
-                class: "project-show-item page-link text-dark my-3"
-              = link_to "カード", '#',
-                class: "project-show-item page-link text-dark my-3"
-              = link_to "カード", '#',
-                class: "project-show-item page-link text-dark my-3"
-            .card-footer.text-center
-              = link_to " カードを追加", '#',
-                class: "text-dark fa fa-plus"
-        td.project-show-td
-          .card.project-show-card.mr-2
-            .card-header.text-center カラム3
-            .card-body.pt-2.project-show-scroll
-              = link_to "カードカードカードカードカードカードカードカードカード", '#',
-                class: "project-show-item page-link text-dark my-3"
-              = link_to "カード", '#',
-                class: "project-show-item page-link text-dark my-3"
-              = link_to "カード", '#',
-                class: "project-show-item page-link text-dark my-3"
-            .card-footer.text-center
-              = link_to " カードを追加", '#',
-                class: "text-dark fa fa-plus"
         - @columns.each do |column|
           td.project-show-td
             .card.project-show-card.mr-2
-              .card-header.text-center 
-                = link_to column.name, edit_project_column_path(@project, column), class: "text-dark"
+              .card-header.column-header-wrapper
+                .column-header-side
+                  - unless column.order == 0
+                    = link_to "", project_column_left_path(@project, column), class: "text-dark fa fa-arrow-circle-o-left", method: :patch
+                .column-header-main
+                  = link_to column.name, edit_project_column_path(@project, column), class: "text-dark"
+                .column-header-side
+                  - unless column.order == @columns.count - 1
+                    = link_to "", project_column_right_path(@project, column), class: "text-dark fa fa-arrow-circle-o-right", method: :patch
               .card-body.pt-2.project-show-scroll
               .card-footer.text-center
                 = link_to " カードを追加", '#',

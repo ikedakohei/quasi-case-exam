@@ -88,3 +88,23 @@
     width:1110px;
   }
 }
+
+.column-header-wrapper {
+  display: table;
+  width: 100%;
+  text-align: center;
+  table-layout:fixed;
+}
+
+.column-header-main, .column-header-side {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.column-header-main {
+  word-wrap: break-word;
+}
+
+.column-header-side {
+  width: 25px;
+}
