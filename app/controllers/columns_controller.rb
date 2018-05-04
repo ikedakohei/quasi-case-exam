@@ -9,7 +9,6 @@ class ColumnsController < ApplicationController
 
   def create
     @column = @project.columns.build(column_params)
-    @column.order = @project.columns.count
     if @column.save
       redirect_to project_path(@project), notice: (I18n.t 'notice.create_column')
     else
@@ -30,13 +29,8 @@ class ColumnsController < ApplicationController
 
   def destroy
     if @column.destroy
-      # orderカラムの値をリセット
-      @project.columns.order(order: :asc).each_with_index do |column, i|
-        unless column.update_attribute(:order, i)
-          render :edit
-        end
-      end
-
+      # find reset_column_order at models/project.rb
+      @project.reset_column_order
       redirect_to project_path(@project), notice: (I18n.t 'notice.destroy_column')
     else
       render :edit
@@ -46,10 +40,8 @@ class ColumnsController < ApplicationController
   # カラムを右へ移動
   def right
     column = @project.columns.find(params[:column_id])
-    column_next = @project.columns.find_by(order: column.order + 1)
-    order_plus = column.order + 1
-    order_minus = column_next.order - 1
-    if column.update_attribute(:order, order_plus) && column_next.update_attribute(:order, order_minus)
+    next_column = @project.columns.find_by(order: column.order + 1)
+    if column.update_attribute(:order, column.order_plus) && next_column.update_attribute(:order, next_column.order_minus)
       redirect_to project_path(@project)
     else
       render project_path(@project)
@@ -59,10 +51,8 @@ class ColumnsController < ApplicationController
   # カラムを左へ移動
   def left
     column = @project.columns.find(params[:column_id])
-    column_prev = @project.columns.find_by(order: column.order - 1)
-    order_minus = column.order - 1
-    order_plus = column_prev.order + 1
-    if column.update_attribute(:order, order_minus) && column_prev.update_attribute(:order, order_plus)
+    prev_column = @project.columns.find_by(order: column.order - 1)
+    if column.update_attribute(:order, column.order_minus) && prev_column.update_attribute(:order, prev_column.order_plus)
       redirect_to project_path(@project)
     else
       render project_path(@project)
