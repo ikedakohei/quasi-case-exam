@@ -104,7 +104,7 @@
             .card-footer.text-center
               = link_to " カードを追加", '#',
                 class: "text-dark fa fa-plus"
-        - @project.columns.order("created_at").each do |column|
+        - @columns.each do |column|
           td.project-show-td
             .card.project-show-card.mr-2
               .card-header.text-center 

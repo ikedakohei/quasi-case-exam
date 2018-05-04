@@ -1,23 +1,24 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :my_project?]
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :my_project?, only: [:show, :edit, :update, :destroy]
 
   # 全プロジェクトを表示
   def index
-    @projects_page = Project.order("created_at").reverse_order.page(params[:page])
+    @projects_page = Project.all.includes(:user).order(created_at: :desc).page(params[:page])
     # Find page_per method at project.rb
     @projects = Project.page_per(@projects_page)
   end
 
   # 自分で作成したプロジェクトのみを表示
   def myproject
-    @projects_page = current_user.projects.order("created_at").reverse_order.page(params[:page])
+    @projects_page = current_user.projects.order(created_at: :desc).page(params[:page])
     # Find page_per method at project.rb
     @projects = current_user.projects.page_per(@projects_page)
   end
 
   def show
+    @columns = @project.columns.order("created_at")
   end
 
   def new
