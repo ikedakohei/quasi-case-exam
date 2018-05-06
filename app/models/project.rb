@@ -4,6 +4,7 @@ class Project < ApplicationRecord
 
   belongs_to :user
   has_many :columns, dependent: :destroy
+  has_many :cards, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 140 }
   validates :content, length: { maximum: 300 }

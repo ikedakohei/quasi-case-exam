@@ -10,6 +10,10 @@ ja:
         content: 概要
       column:
         name: カラム名
+      card:
+        name: カード名
+        deadline: 期限
+        assignee_id: 担当者
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
@@ -25,6 +29,7 @@ ja:
     create_column: カラムを作成しました
     update_column: カラム名を更新しました
     destroy_column: カラムを削除しました
+    create_card: カードを作成しました
   date:
     abbr_day_names:
     - 日
