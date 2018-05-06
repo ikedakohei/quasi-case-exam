@@ -6,6 +6,5 @@ $(function() {
       previous: 'fa fa-arrow-left',
       next:     'fa fa-arrow-right',
     },
-  }
-  );
+  });
 });
