@@ -30,6 +30,8 @@ ja:
     update_column: カラム名を更新しました
     destroy_column: カラムを削除しました
     create_card: カードを作成しました
+    update_card: カードを更新しました
+    destroy_card: カードを削除しました
   date:
     abbr_day_names:
     - 日

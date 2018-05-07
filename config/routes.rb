@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :columns, only: [:new, :create, :edit, :update, :destroy] do
       patch 'left',  to: 'columns#left'
       patch 'right', to: 'columns#right'
-      resources :cards, only: [:new, :create]
+      resources :cards, only: [:new, :create, :edit, :update, :destroy]
     end
   end
 end

@@ -23,7 +23,7 @@
                     = link_to "", project_column_right_path(@project, column), class: "text-dark fa fa-arrow-circle-o-right", method: :patch
               .card-body.py-2.project-show-scroll.px-1
                 - column.cards.order(updated_at: :desc).each do |card|
-                  = link_to card.name, '#',
+                  = link_to card.name, edit_project_column_card_path(@project, column, card),
                     class: "project-show-item page-link text-dark my-2"
               .card-footer.text-center
                 = link_to " カードを追加", new_project_column_card_path(@project, column),

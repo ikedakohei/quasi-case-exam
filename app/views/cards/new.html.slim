@@ -1,22 +1,2 @@
-.row
-  .mx-auto
-    .card.mt-5.project-card
-      .card-header.px-5.pt-3
-        h4.text-center 
-          = "カードを作成"
-      .card-body.px-5
-        = form_with(model: @card, url: project_column_cards_path, local: true) do |f|
-          = render 'shared/error_messages', error_object: @card
-          = f.hidden_field :project_id, value: @card.column.project_id
-          = f.hidden_field :column_id
-          .form-group
-            = f.label :name, "カード名"
-            = f.text_field :name, class: "form-control"
-          .form-group
-            = f.label :deadline, "期限"
-            = f.text_field :deadline, class: "form-control datepicker"
-          .form-group
-            = f.label :assignee_id, "担当者"
-            = f.select :assignee_id, [[current_user.name, current_user.id]], {}, {class: "form-control"}
-          .form-group
-            = f.submit "作成", class: "btn btn-outline-dark btn-block mt-4"
+= render 'cards_form', project: @project, card: @card,
+  title: "カードを作成", card_form_path: project_column_cards_path, submit_label: "作成"

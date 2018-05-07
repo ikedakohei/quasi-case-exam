@@ -1,8 +1,9 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:new, :create]
-  before_action :set_column, only: [:new, :create]
-  before_action :my_project?, only: [:new, :create]
+  before_action :set_project, only: [:new, :create, :edit, :update, :destroy]
+  before_action :my_project?, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_column,  only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_card,    only: [:edit, :update, :destroy]
 
   def new
     @card = @column.cards.build
@@ -14,6 +15,25 @@ class CardsController < ApplicationController
       redirect_to project_path(@project), notice: (I18n.t 'notice.create_card')
     else
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @card.update(card_params)
+      redirect_to project_path(@project), notice: (I18n.t 'notice.update_card')
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @card.destroy
+      redirect_to project_path(@project), notice: (I18n.t 'notice.destroy_card')
+    else
+      render :edit
     end
   end
 
@@ -29,6 +49,10 @@ class CardsController < ApplicationController
 
   def set_column
     @column = @project.columns.find(params[:column_id])
+  end
+
+  def set_card
+    @card = @column.cards.find(params[:id])
   end
 
   def my_project?
