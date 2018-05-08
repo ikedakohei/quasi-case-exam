@@ -19,7 +19,7 @@
             = f.select :assignee_id, [[current_user.name, current_user.id]], {}, {class: "form-control"}
           .form-group
             = f.submit submit_label, class: "btn btn-outline-dark btn-block mt-4"
-          - if title == "カードを編集"
+          - if project.persisted?
             .form-group
               = link_to "カードを削除", project_column_card_path(project, column, card),
                 method: :delete, data: { confirm: "本当にカードを削除しますか？" },
