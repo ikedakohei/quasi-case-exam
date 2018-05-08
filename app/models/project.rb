@@ -12,12 +12,4 @@ class Project < ApplicationRecord
   def self.page_per(projects)
     projects.first_page? ? projects.per(FIRST_PAGE_PER) : projects.per(DEFAULT_PAGE_PER)
   end
-
-  def reset_column_order
-    self.columns.order(order: :asc).each_with_index do |column, i|
-      unless column.update_attribute(:order, i)
-        render "columns#edit"
-      end
-    end
-  end
 end

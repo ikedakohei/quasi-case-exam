@@ -29,8 +29,13 @@ class ColumnsController < ApplicationController
 
   def destroy
     if @column.destroy
-      # find reset_column_order at models/project.rb
-      @project.reset_column_order
+      # orderの値をリセット
+      @project.columns.order(order: :asc).each_with_index do |column, i|
+        unless column.update_attribute(:order, i)
+          render "columns#edit"
+        end
+      end
+
       redirect_to project_path(@project), notice: (I18n.t 'notice.destroy_column')
     else
       render :edit
