@@ -12,7 +12,7 @@
             = f.text_field :name, class: "form-control"
           .form-group
             = f.submit submit_label, class: "btn btn-outline-dark btn-block mt-4"
-          - if project.persisted?
+          - if column.persisted?
             .form-group
               = link_to "カラムを削除", project_column_path(project, column),
                 method: :delete, data: { confirm: "本当にカラムを削除しますか？" },
