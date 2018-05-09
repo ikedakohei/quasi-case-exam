@@ -1,8 +1,8 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:new, :create, :edit, :update, :destroy]
-  before_action :my_project?, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_column,  only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_project, only: [:new, :create, :edit, :update, :destroy, :right, :left]
+  before_action :my_project?, only: [:new, :create, :edit, :update, :destroy, :right, :left]
+  before_action :set_column,  only: [:new, :create, :edit, :update, :destroy, :right, :left]
   before_action :set_card,    only: [:edit, :update, :destroy]
 
   def new
@@ -34,6 +34,24 @@ class CardsController < ApplicationController
       redirect_to project_path(@project), notice: (I18n.t 'notice.destroy_card')
     else
       render :edit
+    end
+  end
+
+  # カードを右へ移動
+  def right
+    card = @column.cards.find(params[:card_id])
+    next_column = @project.columns.find_by(order: @column.order_plus)
+    if card.update_attribute(:column_id, next_column.id)
+      redirect_to project_path(@project)
+    end
+  end
+
+  # カードを左へ移動
+  def left
+    card = @column.cards.find(params[:card_id])
+    prev_column = @project.columns.find_by(order: @column.order - 1)
+    if card.update_attribute(:column_id, prev_column.id)
+      redirect_to project_path(@project)
     end
   end
 
