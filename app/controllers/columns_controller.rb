@@ -1,7 +1,7 @@
 class ColumnsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: [:new, :create, :edit, :update, :destroy, :right, :left]
-  before_action :my_project?, only: [:new, :create, :edit, :update, :destroy]
+  before_action :my_project?, only: [:new, :create, :edit, :update, :destroy, :right, :left]
   before_action :set_column,  only: [:edit, :update, :destroy]
   def new
     @column = @project.columns.build
@@ -32,7 +32,7 @@ class ColumnsController < ApplicationController
       # orderの値をリセット
       @project.columns.order(order: :asc).each_with_index do |column, i|
         unless column.update_attribute(:order, i)
-          render "columns#edit"
+          render :edit
         end
       end
 
@@ -48,8 +48,6 @@ class ColumnsController < ApplicationController
     next_column = @project.columns.find_by(order: column.order + 1)
     if column.update_attribute(:order, column.order_plus) && next_column.update_attribute(:order, next_column.order_minus)
       redirect_to project_path(@project)
-    else
-      render project_path(@project)
     end
   end
 
@@ -59,8 +57,6 @@ class ColumnsController < ApplicationController
     prev_column = @project.columns.find_by(order: column.order - 1)
     if column.update_attribute(:order, column.order_minus) && prev_column.update_attribute(:order, prev_column.order_plus)
       redirect_to project_path(@project)
-    else
-      render project_path(@project)
     end
   end
 
