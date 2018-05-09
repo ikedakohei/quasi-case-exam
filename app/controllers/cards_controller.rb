@@ -49,7 +49,7 @@ class CardsController < ApplicationController
   # カードを左へ移動
   def left
     card = @column.cards.find(params[:card_id])
-    prev_column = @project.columns.find_by(order: @column.order - 1)
+    prev_column = @project.columns.find_by(order: @column.order_minus)
     if card.update_attribute(:column_id, prev_column.id)
       redirect_to project_path(@project)
     end
