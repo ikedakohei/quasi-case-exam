@@ -1,8 +1,8 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:new, :create, :edit, :update, :destroy, :right, :left]
-  before_action :my_project?, only: [:new, :create, :edit, :update, :destroy, :right, :left]
-  before_action :set_column,  only: [:new, :create, :edit, :update, :destroy, :right, :left]
+  before_action :set_project, only: [:new, :create, :edit, :update, :destroy, :move]
+  before_action :my_project?, only: [:new, :create, :edit, :update, :destroy, :move]
+  before_action :set_column,  only: [:new, :create, :edit, :update, :destroy, :move]
   before_action :set_card,    only: [:edit, :update, :destroy]
 
   def new
@@ -37,20 +37,13 @@ class CardsController < ApplicationController
     end
   end
 
-  # カードを右へ移動
-  def right
+  # カードを移動
+  def move
     card = @column.cards.find(params[:card_id])
-    next_column = @project.columns.find_by(order: @column.order_plus)
-    if card.update_attribute(:column_id, next_column.id)
-      redirect_to project_path(@project)
-    end
-  end
-
-  # カードを左へ移動
-  def left
-    card = @column.cards.find(params[:card_id])
-    prev_column = @project.columns.find_by(order: @column.order_minus)
-    if card.update_attribute(:column_id, prev_column.id)
+    prev_or_next_column = params[:right_or_left] == "right" ?
+                          @project.columns.find_by(order: @column.order_plus) :
+                          @project.columns.find_by(order: @column.order_minus)
+    if card.update_attribute(:column_id, prev_or_next_column.id)
       redirect_to project_path(@project)
     end
   end

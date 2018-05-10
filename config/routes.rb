@@ -21,8 +21,7 @@ Rails.application.routes.draw do
       patch 'left',  to: 'columns#left'
       patch 'right', to: 'columns#right'
       resources :cards, only: [:new, :create, :edit, :update, :destroy] do
-        patch 'left', to: 'cards#left'
-        patch 'right', to: 'cards#right'
+        patch 'move', to: 'cards#move'
       end
     end
   end

@@ -29,14 +29,14 @@
                   .card-wrapper.bg-white
                     .card-side
                       - unless column.order == 0
-                        = link_to "", project_column_card_left_path(@project, column, card),
+                        = link_to "", project_column_card_move_path(@project, column, card, right_or_left: "left"),
                           class: "text-dark fa fa-arrow-circle-o-left", method: :patch
                     .card-main
                       = link_to card.name, edit_project_column_card_path(@project, column, card),
                         class: "project-show-item text-dark my-2"
                     .card-side
                       - unless column.order == @columns.count - 1
-                        = link_to "", project_column_card_right_path(@project, column, card),
+                        = link_to "", project_column_card_move_path(@project, column, card, right_or_left: "right"),
                           class: "text-dark fa fa-arrow-circle-o-right", method: :patch
               .card-footer.text-center
                 = link_to " カードを追加", new_project_column_card_path(@project, column),

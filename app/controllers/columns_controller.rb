@@ -45,7 +45,7 @@ class ColumnsController < ApplicationController
   # カラムを右へ移動
   def right
     column = @project.columns.find(params[:column_id])
-    next_column = @project.columns.find_by(order: column.order + 1)
+    next_column = @project.columns.find_by(order: column.order_plus)
     if column.update_attribute(:order, column.order_plus) && next_column.update_attribute(:order, next_column.order_minus)
       redirect_to project_path(@project)
     end
@@ -54,7 +54,7 @@ class ColumnsController < ApplicationController
   # カラムを左へ移動
   def left
     column = @project.columns.find(params[:column_id])
-    prev_column = @project.columns.find_by(order: column.order - 1)
+    prev_column = @project.columns.find_by(order: column.order_minus)
     if column.update_attribute(:order, column.order_minus) && prev_column.update_attribute(:order, prev_column.order_plus)
       redirect_to project_path(@project)
     end
