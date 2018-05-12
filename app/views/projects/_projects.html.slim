@@ -4,5 +4,3 @@
       .card-body.p-0
         = link_to " #{project.name}", project_path(project),
           class: "project-index-item text-center px-2 fa fa-bars py-4"
-        - if project.user.id == current_user.id
-          = link_to "", edit_project_path(project), class: "project-index-item-edit text-center fa fa-pencil-square-o py-1"

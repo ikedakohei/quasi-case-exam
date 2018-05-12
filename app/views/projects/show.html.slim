@@ -1,5 +1,6 @@
 .clearfix.index-show-header
-  h5.mb-3.pt-1.index-show-header-left = @project.name
+  h5.mb-3.pt-1.index-show-header-left
+    = link_to @project.name, edit_project_path(@project), class: "text-dark page-header"
   ul
     li.index-show-header-right 
       = link_to "ユーザを招待", "#", class: "btn btn-sm page-link text-dark py-1"

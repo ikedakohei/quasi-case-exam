@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to myproject_path, notice: (I18n.t 'notice.update_project')
+      redirect_to @project, notice: (I18n.t 'notice.update_project')
     else
       render :edit
     end
