@@ -29,13 +29,6 @@ class ColumnsController < ApplicationController
 
   def destroy
     if @column.destroy
-      # orderの値をリセット
-      @project.columns.order(order: :asc).each_with_index do |column, i|
-        unless column.update_attribute(:order, i)
-          render :edit
-        end
-      end
-
       redirect_to project_path(@project), notice: (I18n.t 'notice.destroy_column')
     else
       render :edit
@@ -46,8 +39,8 @@ class ColumnsController < ApplicationController
   def move
     column = Column.find(params[:column_id])
     column.move!(params[:right_or_left])
-      redirect_to project_path(@project)
-    end
+    redirect_to project_path(@project)
+  end
 
   private
   

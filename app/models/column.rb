@@ -9,6 +9,13 @@ class Column < ApplicationRecord
     self.order = self.project.columns.count
   end
 
+  after_destroy do
+    # orderの値をリセット
+    self.project.columns.order(order: :asc).each_with_index do |column, i|
+      column.update_attribute(:order, i)
+    end
+  end
+
   def order_plus
     self.order + 1
   end
