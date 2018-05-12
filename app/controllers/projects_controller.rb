@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @columns = @project.columns.order(order: :asc)
+    @columns = @project.columns.order(order: :asc).decorate
   end
 
   def new

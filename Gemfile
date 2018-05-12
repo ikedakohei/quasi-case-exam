@@ -25,6 +25,7 @@ gem 'omniauth-github'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'kaminari'
+gem 'draper'
 
 group :production, :staging do
   gem 'rails_12factor'
