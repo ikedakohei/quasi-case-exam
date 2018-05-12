@@ -15,14 +15,14 @@
               .card-header.column-header-wrapper
                 .column-header-side
                   - unless column.order == 0
-                    = link_to "", project_column_left_path(@project, column),
+                    = link_to "", project_column_move_path(@project, column, right_or_left: "left"),
                       class: "text-dark fa fa-arrow-circle-o-left", method: :patch
                 .column-header-main
                   = link_to column.name, edit_project_column_path(@project, column),
                     class: "text-dark"
                 .column-header-side
                   - unless column.order == @columns.count - 1
-                    = link_to "", project_column_right_path(@project, column),
+                    = link_to "", project_column_move_path(@project, column, right_or_left: "right"),
                       class: "text-dark fa fa-arrow-circle-o-right", method: :patch
               .card-body.py-2.project-show-scroll.px-1
                 - column.cards.order(updated_at: :desc).each do |card|

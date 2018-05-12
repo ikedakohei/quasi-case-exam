@@ -18,8 +18,7 @@ Rails.application.routes.draw do
   get 'myproject', to: 'projects#myproject'
   resources :projects, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :columns, only: [:new, :create, :edit, :update, :destroy] do
-      patch 'left',  to: 'columns#left'
-      patch 'right', to: 'columns#right'
+      patch 'move',  to: 'columns#move'
       resources :cards, only: [:new, :create, :edit, :update, :destroy] do
         patch 'move', to: 'cards#move'
       end

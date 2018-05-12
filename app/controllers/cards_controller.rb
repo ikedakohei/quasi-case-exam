@@ -2,7 +2,7 @@ class CardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project, only: [:new, :create, :edit, :update, :destroy, :move]
   before_action :my_project?, only: [:new, :create, :edit, :update, :destroy, :move]
-  before_action :set_column,  only: [:new, :create, :edit, :update, :destroy, :move]
+  before_action :set_column,  only: [:new, :create, :edit, :update, :destroy]
   before_action :set_card,    only: [:edit, :update, :destroy]
 
   def new
@@ -39,13 +39,9 @@ class CardsController < ApplicationController
 
   # カードを移動
   def move
-    card = @column.cards.find(params[:card_id])
-    prev_or_next_column = params[:right_or_left] == "right" ?
-                          @project.columns.find_by(order: @column.order_plus) :
-                          @project.columns.find_by(order: @column.order_minus)
-    if card.update_attribute(:column_id, prev_or_next_column.id)
-      redirect_to project_path(@project)
-    end
+    card = Card.find(params[:card_id])
+    card.move!(params[:right_or_left])
+    redirect_to project_path(@project)
   end
 
   private
