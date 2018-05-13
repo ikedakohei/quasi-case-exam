@@ -7,7 +7,7 @@
         = form_with(url: invite_project_path(@project),local: true , method: :get) do |f|
           .form-inline.my-2
             = f.text_field(:search, class: "form-control mr-2", placeholder: "ユーザーを検索...")
-            = f.submit('検索', class: "btn btn-sm page-link text-dark my-2")
+            = f.submit('検索', name: nil, class: "btn btn-sm page-link text-dark my-2")
           - @users.each do |user|
             table
               tr
