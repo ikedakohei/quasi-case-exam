@@ -1,0 +1,20 @@
+- columns.each do |column|
+  td.project-show-td
+    .card.project-show-card.mr-2
+      .card-header.column-header-wrapper
+        .column-header-side
+          - unless column.left_end?
+            = link_to "", project_column_move_path(project, column, right_or_left: "left"),
+              class: "text-dark fa fa-arrow-circle-o-left", method: :patch
+        .column-header-main
+          = link_to column.name, edit_project_column_path(project, column),
+            class: "text-dark"
+        .column-header-side
+          - unless column.right_end?
+            = link_to "", project_column_move_path(project, column, right_or_left: "right"),
+              class: "text-dark fa fa-arrow-circle-o-right", method: :patch
+      .card-body.py-2.project-show-scroll.px-1
+        = render partial: 'card', locals: { cards: column.cards, column: column, project: project }
+      .card-footer.text-center
+        = link_to " カードを追加", new_project_column_card_path(project, column),
+          class: "text-dark fa fa-plus"
