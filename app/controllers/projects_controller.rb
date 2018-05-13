@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
   end
 
   def invite
-    @users = User.all
+    @users = User.search(params[:search])
   end
 
   private
