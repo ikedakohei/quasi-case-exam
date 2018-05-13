@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   get 'myproject', to: 'projects#myproject'
   resources :projects, only: [:show, :new, :create, :edit, :update, :destroy] do
+    member do
+      get 'invite'
+    end
     resources :columns, only: [:new, :create, :edit, :update, :destroy] do
       patch 'move',  to: 'columns#move'
       resources :cards, only: [:new, :create, :edit, :update, :destroy] do

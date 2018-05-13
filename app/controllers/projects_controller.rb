@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :my_project?, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :invite]
+  before_action :my_project?, only: [:show, :edit, :update, :destroy, :invite]
 
   # 全プロジェクトを表示
   def index
@@ -51,6 +51,10 @@ class ProjectsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def invite
+    @users = User.all
   end
 
   private

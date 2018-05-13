@@ -1,0 +1,18 @@
+.row
+  .mx-auto
+    .card.mt-5.project-invite
+      .card-header.px-5.pt-3
+        h4.text-center ユーザーを招待
+      .card-body.px-5
+          .form-group
+            form.form-inline.my-2
+              input.form-control.mr-2[type="search" placeholder="ユーザーを検索..." aria-label="ユーザーを検索..."]
+              button.btn.page-link.text-dark.my-2.my-sm-0[type="submit"] 検索
+          - @users.each do |user|
+            table
+              tr
+                td
+                  = image_tag user.image, class: "rounded-circle invite-image my-1"
+                  = user.name
+                td
+                  = link_to "招待", "#", class: "btn btn-sm btn-outline-secondary text-dark ml-2"
