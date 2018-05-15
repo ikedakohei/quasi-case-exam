@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   get  'mypage', to: 'users#edit'
   patch 'mypage', to: 'users#update'
-  resources :users, only: [:update, :destroy]
+  resources :users, only: [:update, :destroy] do
+    member do
+      get 'notification'
+    end
+  end
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   devise_scope :user do
