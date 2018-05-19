@@ -10,11 +10,7 @@ class User < ApplicationRecord
   end
 
   def self.search(search)
-    if search
-      all.where('name ILIKE(?)', "%#{search}%")
-    else
-      all
-    end
+    search ? all.where('name ILIKE(?)', "%#{search}%") : all
   end
 
   validates :name, presence: true
