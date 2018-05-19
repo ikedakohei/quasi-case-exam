@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root to: 'projects#index'
   end
 
-  resources :notifications, only: [:index]
+  get   'notification', to: 'notifications#index'
   get   'mypage', to: 'users#edit'
   patch 'mypage', to: 'users#update'
   resources :users, only: [:update, :destroy]

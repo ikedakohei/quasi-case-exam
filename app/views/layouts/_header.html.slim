@@ -12,5 +12,5 @@ header.sticky-top
             = link_to "マイページ", mypage_path, class: "header-link nav-link"
           li.nav-item.active
             = link_to "ログアウト", logout_path, class: "header-link nav-link"
-        = link_to "", notifications_path, class: "fa fa-bell-o fa-lg text-dark mr-3 header-notification"
+        = link_to "", notification_path, class: "fa fa-bell-o fa-lg text-dark mr-3 header-notification"
         = image_tag current_user.image, class: "rounded-circle header-image"
