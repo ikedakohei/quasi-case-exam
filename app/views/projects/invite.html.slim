@@ -12,7 +12,12 @@
             table
               tr
                 td
-                  = link_to "招待", "#", class: "btn btn-sm page-link text-dark mr-2"
+                  - unless @project.invited?(user)
+                    = link_to "招　待", invitations_path(project_id: @project.id, user_id: user.id),
+                      class: "btn btn-sm btn-outline-secondary mr-2", method: :post
+                  - else
+                    = link_to "招待済", invitation_path(project_id: @project.id, user_id: user.id),
+                      class: "btn btn-sm btn-secondary mr-2", method: :delete
                 td
                   = image_tag user.image, class: "rounded-circle invite-image my-1"
                   = user.name

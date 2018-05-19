@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
   # 全プロジェクトを表示
   def index
-    @projects_page = Project.all.includes(:user).order(created_at: :desc).page(params[:page])
+    @projects_page = Project.order(created_at: :desc).page(params[:page])
     # Find page_per method at project.rb
     @projects = Project.page_per(@projects_page)
   end
@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
   end
 
   def invite
-    @users = User.search(params[:search])
+    @users = not_current_users.search(params[:search])
   end
 
   private
@@ -72,5 +72,9 @@ class ProjectsController < ApplicationController
     unless current_user.id == @project.user_id
       redirect_to myproject_path, notice: (I18n.t 'notice.not_your_project')
     end
+  end
+
+  def not_current_users
+    User.where.not(id: current_user.id)
   end
 end

@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :invitations, dependent: :destroy
+  has_many :invitation_projects, through: :invitations, source: :project
+
   has_many :projects, dependent: :destroy
   devise :rememberable, :trackable, :omniauthable, omniauth_providers: %i(facebook twitter github)
 
