@@ -1,0 +1,2 @@
+| $('#invite_users').append("#{escape_javascript(render 'invite_users', project: @project, users: @users)}");
+| $('#invite_morelink').replaceWith("#{escape_javascript(link_to_next_page(@users, ' もっと見る…', remote: true, id: 'invite_morelink', class: 'project-more fa fa-chevron-circle-down'))}");

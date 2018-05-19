@@ -1,0 +1,13 @@
+          - users.each do |user|
+            table
+              tr
+                td
+                  - unless project.invited?(user)
+                    = link_to "招　待", invitations_path(project_id: project.id, user_id: user.id),
+                      class: "btn btn-sm btn-outline-secondary mr-2", method: :post
+                  - else
+                    = link_to "招待済", invitation_path(project_id: project.id, user_id: user.id),
+                      class: "btn btn-sm btn-secondary mr-2", method: :delete
+                td
+                  = image_tag user.image, class: "rounded-circle invite-image my-1"
+                  = user.name

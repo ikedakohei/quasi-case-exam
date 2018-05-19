@@ -2,6 +2,6 @@ class NotificationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all
+    @projects = current_user.notification_pages(params[:page])
   end
 end

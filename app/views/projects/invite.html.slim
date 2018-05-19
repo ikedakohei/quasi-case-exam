@@ -3,21 +3,12 @@
     .card.mt-5.project-invite
       .card-header.px-5.pt-3
         h4.text-center ユーザーを招待
-      .card-body.px-5
+      .card-body.px-5#invite_users
         = form_with(url: invite_project_path(@project),local: true , method: :get) do |f|
           .form-inline.my-2
             = f.text_field(:search, class: "form-control mr-2", placeholder: "ユーザーを検索...")
             = f.submit('検索', name: nil, class: "btn btn-sm page-link text-dark my-2")
-          - @users.each do |user|
-            table
-              tr
-                td
-                  - unless @project.invited?(user)
-                    = link_to "招　待", invitations_path(project_id: @project.id, user_id: user.id),
-                      class: "btn btn-sm btn-outline-secondary mr-2", method: :post
-                  - else
-                    = link_to "招待済", invitation_path(project_id: @project.id, user_id: user.id),
-                      class: "btn btn-sm btn-secondary mr-2", method: :delete
-                td
-                  = image_tag user.image, class: "rounded-circle invite-image my-1"
-                  = user.name
+          = render 'invite_users', project: @project, users: @users
+      .card-footer.text-center.bg-white.border-top-0
+        = link_to_next_page @users, ' もっと見る…', remote: true,
+          id: 'invite_morelink', class: 'project-more fa fa-chevron-circle-down'

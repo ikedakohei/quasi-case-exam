@@ -1,0 +1,8 @@
+- projects.each do |project|
+  table
+    tr
+      td
+        = link_to "参　加", "#", class: "btn btn-sm btn-outline-secondary mr-2"
+      td
+        = image_tag project.user.image, class: "rounded-circle invite-image my-1"
+        = "#{project.user.name}さんが#{project.name}プロジェクトに招待しています"

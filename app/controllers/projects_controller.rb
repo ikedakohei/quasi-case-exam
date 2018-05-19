@@ -54,7 +54,9 @@ class ProjectsController < ApplicationController
   end
 
   def invite
-    @users = not_current_users.search(params[:search])
+    # usersにcurrent_user以外のユーザを代入
+    users = User.where.not(id: current_user.id)
+    @users = users.search(params[:page], params[:search])
   end
 
   private
@@ -72,9 +74,5 @@ class ProjectsController < ApplicationController
     unless current_user.id == @project.user_id
       redirect_to myproject_path, notice: (I18n.t 'notice.not_your_project')
     end
-  end
-
-  def not_current_users
-    User.where.not(id: current_user.id)
   end
 end
