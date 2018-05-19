@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:new, :create, :edit, :update, :destroy]
-  before_action :my_project?, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_project, only: [:new, :create, :edit, :update, :destroy, :move]
+  before_action :my_project?, only: [:new, :create, :edit, :update, :destroy, :move]
   before_action :set_column,  only: [:new, :create, :edit, :update, :destroy]
   before_action :set_card,    only: [:edit, :update, :destroy]
 
@@ -35,6 +35,13 @@ class CardsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  # カードを移動
+  def move
+    card = Card.find(params[:card_id])
+    card.move!(params[:right_or_left])
+    redirect_to project_path(@project)
   end
 
   private

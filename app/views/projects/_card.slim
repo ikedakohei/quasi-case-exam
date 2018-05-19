@@ -1,0 +1,13 @@
+- cards.reverse_each do |card|
+  .card-wrapper.bg-white
+    .card-side
+      - unless column.left_end?
+        = link_to "", project_column_card_move_path(project, column, card, right_or_left: "left"),
+          class: "text-dark fa fa-arrow-circle-o-left", method: :patch
+    .card-main
+      = link_to card.name, edit_project_column_card_path(project, column, card),
+        class: "project-show-item text-dark my-2"
+    .card-side
+      - unless column.right_end?
+        = link_to "", project_column_card_move_path(project, column, card, right_or_left: "right"),
+          class: "text-dark fa fa-arrow-circle-o-right", method: :patch

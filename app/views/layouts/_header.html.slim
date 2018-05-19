@@ -12,7 +12,5 @@ header.sticky-top
             = link_to "マイページ", mypage_path, class: "header-link nav-link"
           li.nav-item.active
             = link_to "ログアウト", logout_path, class: "header-link nav-link"
-        form.form-inline.my-2.my-lg-0
-          input.form-control.mr-sm-2[type="search" placeholder="検索..." aria-label="検索..."]
-          button.btn.page-link.text-dark.my-2.my-sm-0[type="submit"]
-            | 検索
+        = link_to "", notification_user_path(current_user), class: "fa fa-bell-o fa-lg text-dark mr-3 header-notification"
+        = image_tag current_user.image, class: "rounded-circle header-image"

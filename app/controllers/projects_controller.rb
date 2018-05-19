@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
-  before_action :my_project?, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :invite]
+  before_action :my_project?, only: [:show, :edit, :update, :destroy, :invite]
 
   # 全プロジェクトを表示
   def index
@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @columns = @project.columns.order(order: :asc)
+    @columns = @project.columns.all.includes(:cards).order(order: :asc).decorate
   end
 
   def new
@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to myproject_path, notice: (I18n.t 'notice.update_project')
+      redirect_to @project, notice: (I18n.t 'notice.update_project')
     else
       render :edit
     end
@@ -51,6 +51,10 @@ class ProjectsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def invite
+    @users = User.search(params[:search])
   end
 
   private

@@ -1,7 +1,7 @@
 class ColumnsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:new, :create, :edit, :update, :destroy, :right, :left]
-  before_action :my_project?, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_project, only: [:new, :create, :edit, :update, :destroy, :move]
+  before_action :my_project?, only: [:new, :create, :edit, :update, :destroy, :move]
   before_action :set_column,  only: [:edit, :update, :destroy]
   def new
     @column = @project.columns.build
@@ -29,34 +29,17 @@ class ColumnsController < ApplicationController
 
   def destroy
     if @column.destroy
-      # find reset_column_order at models/project.rb
-      @project.reset_column_order
       redirect_to project_path(@project), notice: (I18n.t 'notice.destroy_column')
     else
       render :edit
     end
   end
 
-  # カラムを右へ移動
-  def right
-    column = @project.columns.find(params[:column_id])
-    next_column = @project.columns.find_by(order: column.order + 1)
-    if column.update_attribute(:order, column.order_plus) && next_column.update_attribute(:order, next_column.order_minus)
-      redirect_to project_path(@project)
-    else
-      render project_path(@project)
-    end
-  end
-
-  # カラムを左へ移動
-  def left
-    column = @project.columns.find(params[:column_id])
-    prev_column = @project.columns.find_by(order: column.order - 1)
-    if column.update_attribute(:order, column.order_minus) && prev_column.update_attribute(:order, prev_column.order_plus)
-      redirect_to project_path(@project)
-    else
-      render project_path(@project)
-    end
+  # カラムを移動
+  def move
+    column = Column.find(params[:column_id])
+    column.move!(params[:right_or_left])
+    redirect_to project_path(@project)
   end
 
   private

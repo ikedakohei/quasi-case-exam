@@ -1,0 +1,18 @@
+.row
+  .mx-auto
+    .card.mt-5.user-notification
+      .card-header.pt-3.text-center
+        h4.fa.fa-bell-o.fa-lg
+          = " お知らせ"
+      .card-body.px-3
+        - @users.each do |user|
+          table
+            tr
+              td
+                = link_to "参加", "#", class: "btn btn-sm page-link text-dark mr-2"
+              td
+                = image_tag user.image, class: "rounded-circle invite-image my-1"
+                = user.name + "さんがXXプロジェクトに招待しています"
+      .card-footer.text-center.bg-white.border-top-0
+        = link_to ' もっと見る…', "#", class: 'project-more fa fa-chevron-circle-down'
+        

@@ -1,33 +1,16 @@
 .clearfix.index-show-header
-  h5.mb-3.pt-1.index-show-header-left = @project.name
+  h5.mb-3.pt-1.index-show-header-left
+    = link_to @project.name, edit_project_path(@project), class: "text-dark page-header"
   ul
     li.index-show-header-right 
-      = link_to "ユーザを招待", "#", class: "btn btn-sm page-link text-dark py-1"
+      = link_to "ユーザを招待", invite_project_path(@project), class: "btn btn-sm page-link text-dark py-1"
     li.index-show-header-right.mr-3
       = link_to "ログを見る", "#", class: "btn btn-sm page-link text-dark py-1"
 .row.table-responsive.project-show-table-responsive
   table
     tbody
       tr
-        - @columns.each do |column|
-          td.project-show-td
-            .card.project-show-card.mr-2
-              .card-header.column-header-wrapper
-                .column-header-side
-                  - unless column.order == 0
-                    = link_to "", project_column_left_path(@project, column), class: "text-dark fa fa-arrow-circle-o-left", method: :patch
-                .column-header-main
-                  = link_to column.name, edit_project_column_path(@project, column), class: "text-dark"
-                .column-header-side
-                  - unless column.order == @columns.count - 1
-                    = link_to "", project_column_right_path(@project, column), class: "text-dark fa fa-arrow-circle-o-right", method: :patch
-              .card-body.py-2.project-show-scroll.px-1
-                - column.cards.order(updated_at: :desc).each do |card|
-                  = link_to card.name, edit_project_column_card_path(@project, column, card),
-                    class: "project-show-item page-link text-dark my-2"
-              .card-footer.text-center
-                = link_to " カードを追加", new_project_column_card_path(@project, column),
-                  class: "text-dark fa fa-plus"
+        = render 'column', columns: @columns, project: @project
         td.project-show-td
           .card.project-show-card.mr-2
             .card-header.text-center.border-bottom-0

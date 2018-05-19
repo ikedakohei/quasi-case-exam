@@ -9,6 +9,14 @@ class User < ApplicationRecord
     end
   end
 
+  def self.search(search)
+    if search
+      all.where('name ILIKE(?)', "%#{search}%")
+    else
+      all
+    end
+  end
+
   validates :name, presence: true
 
   mount_uploader :image, ImageUploader

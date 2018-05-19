@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   get  'mypage', to: 'users#edit'
   patch 'mypage', to: 'users#update'
-  resources :users, only: [:update, :destroy]
+  resources :users, only: [:update, :destroy] do
+    member do
+      get 'notification'
+    end
+  end
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   devise_scope :user do
@@ -17,10 +21,14 @@ Rails.application.routes.draw do
 
   get 'myproject', to: 'projects#myproject'
   resources :projects, only: [:show, :new, :create, :edit, :update, :destroy] do
+    member do
+      get 'invite'
+    end
     resources :columns, only: [:new, :create, :edit, :update, :destroy] do
-      patch 'left',  to: 'columns#left'
-      patch 'right', to: 'columns#right'
-      resources :cards, only: [:new, :create, :edit, :update, :destroy]
+      patch 'move',  to: 'columns#move'
+      resources :cards, only: [:new, :create, :edit, :update, :destroy] do
+        patch 'move', to: 'cards#move'
+      end
     end
   end
 end
