@@ -29,5 +29,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :invitations, only: [:create, :destroy]
+  resources :invitations, only: [:create, :update, :destroy] do
+    member do
+      patch 'refuse'
+    end
+  end
 end

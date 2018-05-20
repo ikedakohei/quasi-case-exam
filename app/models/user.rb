@@ -17,7 +17,7 @@ class User < ApplicationRecord
   end
 
   def notification_pages(params)
-    invitation_projects.all.includes(:user).page(params).per(5)
+    invitations.all.includes(:user).order(created_at: :desc).page(params).per(5)
   end
   validates :name, presence: true
 

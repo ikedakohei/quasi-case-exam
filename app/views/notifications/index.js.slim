@@ -1,2 +1,2 @@
-| $('#notifications').append("#{escape_javascript(render 'notifications', projects: @projects)}");
-| $('#notifications_morelink').replaceWith("#{escape_javascript(link_to_next_page(@projects, ' もっと見る…', remote: true, id: 'notifications_morelink', class: 'project-more fa fa-chevron-circle-down'))}");
+| $('#notifications').append("#{escape_javascript(render 'notifications', invitations: @invitations)}");
+| $('#notifications_morelink').replaceWith("#{escape_javascript(link_to_next_page(@invitations, ' もっと見る…', remote: true, id: 'notifications_morelink', class: 'project-more fa fa-chevron-circle-down'))}");
