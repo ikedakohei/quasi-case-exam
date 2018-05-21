@@ -54,9 +54,9 @@ class ProjectsController < ApplicationController
   end
 
   def invite
-    # usersにcurrent_user以外のユーザを代入
-    users = User.where.not(id: current_user.id)
-    @users = users.search(params[:page], params[:search])
+    # find search method at user.rb
+    # @usersにcurrent_user以外のユーザを代入
+    @users = User.search(params[:page], params[:search]).where.not(id: current_user.id)
   end
 
   private
