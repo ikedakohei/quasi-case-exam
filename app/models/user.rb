@@ -16,9 +16,6 @@ class User < ApplicationRecord
     search ? all.page(page).per(10).where('name ILIKE(?)', "%#{search}%") : all.page(page).per(10)
   end
 
-  def notification_pages(params)
-    invitation_projects.all.includes(:user).page(params).per(5)
-  end
   validates :name, presence: true
 
   mount_uploader :image, ImageUploader
