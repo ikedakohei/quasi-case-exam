@@ -19,4 +19,8 @@ class Project < ApplicationRecord
   def invited?(user)
     invitation_users.exists?(id: user.id)
   end
+
+  def self.notification_pages(params)
+    all.includes(:user).page(params).per(5)
+  end
 end

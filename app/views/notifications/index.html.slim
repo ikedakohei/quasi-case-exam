@@ -5,7 +5,7 @@
         h4.fa.fa-bell-o.fa-lg
           = " お知らせ"
       .card-body.px-3#notifications
-        = render 'notifications', invitations: @invitations
+        = render 'notifications', invited_projects: @invited_projects
       .card-footer.text-center.bg-white.border-top-0
-        = link_to_next_page @invitations, ' もっと見る…', remote: true,
+        = link_to_next_page @invited_projects, ' もっと見る…', remote: true,
           id: 'notifications_morelink', class: 'project-more fa fa-chevron-circle-down'
