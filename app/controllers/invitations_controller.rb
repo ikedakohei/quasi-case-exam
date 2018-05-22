@@ -1,7 +1,7 @@
 class InvitationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project,    only: [:create, :update, :destroy, :refuse]
-  before_action :host_project?,  only: [:create, :update, :destroy, :refuse]
+  before_action :set_project,    only: [:create, :destroy]
+  before_action :host_project?,  only: [:create, :destroy]
   before_action :set_invitation, only: [:update, :refuse]
 
   def create
