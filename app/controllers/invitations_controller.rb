@@ -1,6 +1,7 @@
 class InvitationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:create, :destroy]
+  before_action :set_project,    only: [:create, :update, :destroy, :refuse]
+  before_action :host_project?,  only: [:create, :update, :destroy, :refuse]
   before_action :set_invitation, only: [:update, :refuse]
 
   def create
@@ -35,5 +36,11 @@ class InvitationsController < ApplicationController
 
   def set_invitation
     @invitation = Invitation.find(params[:id])
+  end
+
+  def host_project?
+    unless current_user.id == @project.user_id
+      redirect_to myproject_path, notice: (I18n.t 'notice.not_your_project')
+    end
   end
 end

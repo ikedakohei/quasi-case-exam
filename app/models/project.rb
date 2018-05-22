@@ -16,6 +16,12 @@ class Project < ApplicationRecord
     projects.first_page? ? projects.per(FIRST_PAGE_PER) : projects.per(DEFAULT_PAGE_PER)
   end
 
+  def self.myprojects(user)
+    relation = left_joins(:invitations).distinct
+    relation.merge(Invitation.where(user: user, accept: true))
+            .or(relation.where(user: user))
+  end
+
   def invited?(user)
     invitation_users.exists?(id: user.id)
   end

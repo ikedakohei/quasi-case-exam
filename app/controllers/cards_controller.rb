@@ -63,7 +63,7 @@ class CardsController < ApplicationController
   end
 
   def my_project?
-    unless current_user.id == @project.user_id
+    unless current_user.my_project?(@project)
       redirect_to myproject_path, notice: (I18n.t 'notice.not_your_project')
     end
   end
