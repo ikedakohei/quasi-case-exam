@@ -13,7 +13,7 @@ class Project < ApplicationRecord
   validates :content, length: { maximum: 300 }
 
   def self.page_per(projects)
-    projects.current_page == 1 ? projects.per(FIRST_PAGE_PER) : projects.per(DEFAULT_PAGE_PER)
+    projects.page(1) ? projects.per(FIRST_PAGE_PER) : projects.per(DEFAULT_PAGE_PER)
   end
 
   scope :myprojects, ->(user) do
