@@ -12,8 +12,8 @@ class Project < ApplicationRecord
   validates :name, presence: true, length: { maximum: 140 }
   validates :content, length: { maximum: 300 }
 
-  def self.page_per(projects)
-    projects.page(1) ? projects.per(FIRST_PAGE_PER) : projects.per(DEFAULT_PAGE_PER)
+  scope :page_per, ->(p) do
+    order(created_at: :desc).page(p[:page]).per(9)
   end
 
   scope :myprojects, ->(user) do

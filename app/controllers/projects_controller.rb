@@ -6,16 +6,12 @@ class ProjectsController < ApplicationController
 
   # 全プロジェクトを表示
   def index
-    @projects_page = Project.order(created_at: :desc).page(params[:page])
-    # Find page_per method at project.rb
-    @projects = Project.page_per(@projects_page)
+    @projects = Project.page_per(params)
   end
 
   # 自分で作成したプロジェクトのみを表示
   def myproject
-    @projects_page = Project.myprojects(current_user).order(created_at: :desc).page(params[:page])
-    # Find page_per method at project.rb
-    @projects = Project.myprojects(current_user).page_per(@projects_page)
+    @projects = Project.myprojects(current_user).page_per(params)
   end
 
   def show
@@ -55,7 +51,6 @@ class ProjectsController < ApplicationController
   end
 
   def invite
-    # find search method at user.rb
     # @usersにcurrent_user以外のユーザを代入
     @users = User.search(params[:page], params[:search]).where.not(id: current_user.id)
   end
@@ -77,6 +72,7 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # 自分で作成したプロジェクトかどうか判断
   def host_project?
     unless current_user.id == @project.user_id
       redirect_to myproject_path, notice: (I18n.t 'notice.not_your_project')
