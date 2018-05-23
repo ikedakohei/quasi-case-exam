@@ -11,9 +11,8 @@ class InvitationsController < ApplicationController
   end
 
   def update
-    if @invitation.update_attribute(:accept, true)
-      redirect_to notification_path
-    end
+    @invitation.update_attribute(:accept, true)
+    redirect_to notification_path
   end
 
   def destroy
@@ -23,9 +22,8 @@ class InvitationsController < ApplicationController
   end
 
   def refuse
-    if @invitation.update_attribute(:accept, false)
-      redirect_to notification_path
-    end
+    @invitation.update_attribute(:accept, false)
+    redirect_to notification_path
   end
 
   private

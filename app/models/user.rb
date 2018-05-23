@@ -17,19 +17,16 @@ class User < ApplicationRecord
   end
 
   def self.search(page, search)
-    search ? all.page(page).per(10).where('name ILIKE(?)', "%#{search}%") : all.page(page).per(10)
-  end
-
-  def invited?(project)
-    invitation_projects.exists?(id: project.id)
+    search ? page(page).per(10).where('name ILIKE(?)', "%#{search}%") : page(page).per(10)
   end
 
   def accept?(project)
-    invitation = self.invitations.find_by(project_id: project.id)
-    invitation.accept
+    if invitation = invitations.find_by(project_id: project.id)
+      invitation.accept
+    end
   end
 
   def my_project?(project)
-    self.id == project.user_id || (self.invited?(project) && self.accept?(project))
+    id == project.user_id || accept?(project)
   end
 end

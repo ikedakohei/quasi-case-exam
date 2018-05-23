@@ -9,5 +9,5 @@
           = link_to "参加済", refuse_invitation_path(invitation), method: :patch,
             class: "btn btn-sm btn-secondary mr-2"
       td
-        = image_tag invitation.user.image, class: "rounded-circle invite-image my-1"
-        = "#{invitation.user.name}さんが#{invitation.project.name}に招待しています"
+        = image_tag invitation.project.user.image, class: "rounded-circle invite-image my-1"
+        = "#{invitation.project.user.name}さんが#{invitation.project.name}に招待しています"

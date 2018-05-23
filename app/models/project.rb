@@ -13,10 +13,10 @@ class Project < ApplicationRecord
   validates :content, length: { maximum: 300 }
 
   def self.page_per(projects)
-    projects.first_page? ? projects.per(FIRST_PAGE_PER) : projects.per(DEFAULT_PAGE_PER)
+    projects.total_pages == 1 ? projects.per(FIRST_PAGE_PER) : projects.per(DEFAULT_PAGE_PER)
   end
 
-  def self.myprojects(user)
+  scope :myprojects, ->(user) do
     relation = left_joins(:invitations).distinct
     relation.merge(Invitation.where(user: user, accept: true))
             .or(relation.where(user: user))

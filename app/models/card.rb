@@ -7,8 +7,8 @@ class Card < ApplicationRecord
   
   def move!(params)
     prev_or_next_column = params == 'right' ?
-                          self.project.columns.find_by(order: self.column.order_plus) :
-                          self.project.columns.find_by(order: self.column.order_minus)
-    self.update_attribute(:column_id, prev_or_next_column.id)
+                          project.columns.find_by(order: column.order_plus) :
+                          project.columns.find_by(order: column.order_minus)
+    update_attribute(:column_id, prev_or_next_column.id)
   end
 end
