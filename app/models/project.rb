@@ -1,7 +1,4 @@
 class Project < ApplicationRecord
-  FIRST_PAGE_PER = 8
-  DEFAULT_PAGE_PER = 9
-
   belongs_to :user
   has_many :columns, dependent: :destroy
   has_many :cards, dependent: :destroy
