@@ -1,7 +1,7 @@
 .row#projects
   .col-lg-12
     .card.my-2
-      card-body.p-0
+      .card-body.p-0
         = link_to " プロジェクト作成…", new_project_path,
           class: "project-index-item text-center px-2 py-4 fa fa-plus-square-o"
   = render 'projects', projects: @projects
