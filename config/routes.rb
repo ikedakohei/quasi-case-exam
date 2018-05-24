@@ -27,6 +27,7 @@ Rails.application.routes.draw do
         patch 'move', to: 'cards#move'
       end
     end
+    resources :logs, only: [:index]
   end
 
   resources :invitations, only: [:create, :update, :destroy] do
