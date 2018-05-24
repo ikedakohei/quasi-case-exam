@@ -4,7 +4,7 @@ class LogsController < ApplicationController
   before_action :my_project?, only: [:index]
 
   def index
-    @invitations = @project.invitations.invitation_pages(params)
+    @invitations = @project.invitations.log_pages(params)
   end
 
   private
