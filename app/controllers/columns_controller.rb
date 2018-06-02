@@ -1,14 +1,17 @@
 class ColumnsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:new, :create, :edit, :update, :destroy, :move]
-  before_action :my_project?, only: [:new, :create, :edit, :update, :destroy, :move]
-  before_action :set_column,  only: [:edit, :update, :destroy]
+  before_action :set_project,        only: [:new, :create, :edit, :update, :destroy, :move]
+  before_action :my_project?,        only: [:new, :create, :edit, :update, :destroy, :move]
+  before_action :set_column,         only: [:edit, :update, :destroy]
+  before_action :setting_log_writer, only: [:update, :destroy]
+
   def new
     @column = @project.columns.build
   end
 
   def create
     @column = @project.columns.build(column_params)
+    @column.set_log_writer(current_user)
     if @column.save
       redirect_to project_path(@project), notice: (I18n.t 'notice.create_column')
     else
@@ -54,6 +57,10 @@ class ColumnsController < ApplicationController
 
   def set_column
     @column = @project.columns.find(params[:id])
+  end
+
+  def setting_log_writer
+    @column.set_log_writer(current_user)
   end
 
   def my_project?

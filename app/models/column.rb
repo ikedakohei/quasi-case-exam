@@ -4,6 +4,8 @@ class Column < ApplicationRecord
   validates :name, presence: true, length: { maximum: 40 },
                    uniqueness: { scope: :project_id }
 
+  attr_accessor :log_writer
+
   before_create do
     # orderに初期値を代入
     self.order = self.project.columns.count
@@ -14,6 +16,21 @@ class Column < ApplicationRecord
     self.project.columns.order(order: :asc).each_with_index do |column, i|
       column.update_attribute(:order, i)
     end
+  end
+
+  after_create  -> { create_log("作成") }
+  after_update  -> { create_log("編集") }
+  after_destroy -> { create_log("削除") }
+
+  def create_log(action)
+    if log_writer
+      content = "#{log_writer.name}さんが#{name}カラムを#{action}しました。"
+      Log.create!(content: content, image: log_writer.image, project_id: project.id)
+    end
+  end
+
+  def set_log_writer(user)
+    self.log_writer = user
   end
 
   def order_plus

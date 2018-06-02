@@ -50,7 +50,8 @@ ActiveRecord::Schema.define(version: 20180526040651) do
   end
 
   create_table "logs", force: :cascade do |t|
-    t.text "content", null: false
+    t.string "content", default: "", null: false
+    t.string "image", default: "", null: false
     t.bigint "project_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -83,4 +84,5 @@ ActiveRecord::Schema.define(version: 20180526040651) do
 
   add_foreign_key "cards", "columns"
   add_foreign_key "cards", "projects"
+  add_foreign_key "logs", "projects"
 end

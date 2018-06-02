@@ -1,8 +1,9 @@
 class CreateLogs < ActiveRecord::Migration[5.1]
   def change
     create_table :logs do |t|
-      t.text :content, null: false
-      t.belongs_to :project, index: true, null: false
+      t.string :content, null: false, default: ""
+      t.string :image, null: false, default: ""
+      t.references :project, foreign_key: true, null: false
 
       t.timestamps
     end
