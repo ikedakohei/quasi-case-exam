@@ -1,0 +1,11 @@
+.row
+  .mx-auto
+    .card.mt-5.user-notification
+      .card-header.pt-3.text-center
+        h4.fa.fa-file-text-o.fa-lg
+          = " ログ"
+      .card-body.px-3#logs
+        = render 'logs', invitations: @invitations
+      .card-footer.text-center.bg-white.border-top-0
+        = link_to_next_page @invitations, ' もっと見る…', remote: true,
+          id: 'logs_morelink', class: 'project-more fa fa-chevron-circle-down'

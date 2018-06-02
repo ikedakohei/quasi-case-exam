@@ -5,7 +5,7 @@
     li.index-show-header-right 
       = link_to "ユーザを招待", invite_project_path(@project), class: "btn btn-sm page-link text-dark py-1"
     li.index-show-header-right.mr-3
-      = link_to "ログを見る", "#", class: "btn btn-sm page-link text-dark py-1"
+      = link_to "ログを見る", project_logs_path(@project), class: "btn btn-sm page-link text-dark py-1"
 .row.table-responsive.project-show-table-responsive
   table
     tbody
