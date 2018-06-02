@@ -59,8 +59,8 @@ class Card < ApplicationRecord
     cards = Card.where('deadline <= ?', Date.today)
     cards.each do |card|
       assignee_user = User.find(card.assignee_id)
-      content = card.deadline.today? ? "#{assignee_user.name}さん、本日が#{name}カードの締切期限です。"
-                                     : "#{assignee_user.name}さん、#{name}カードの締切期限が過ぎています。"
+      content = card.deadline.today? ? "#{assignee_user.name}さん、本日が#{card.name}カードの締切期限です。"
+                                     : "#{assignee_user.name}さん、#{card.name}カードの締切期限が過ぎています。"
       Log.create!(content: content, image: assignee_user.image, project_id: card.project.id)
     end
   end
