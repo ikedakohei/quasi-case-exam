@@ -23,4 +23,12 @@ class Project < ApplicationRecord
   def invited?(user)
     invitation_users.exists?(id: user.id)
   end
+
+  def members(host_user)
+    members = [[host_user.name, host_user.id]]
+    self.invitation_users.each.with_index(1) do |member, i|
+      members[i] = [member.name, member.id]
+    end
+    members
+  end
 end

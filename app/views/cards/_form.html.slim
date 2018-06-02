@@ -16,7 +16,7 @@
             = f.text_field :deadline, class: "form-control datepicker"
           .form-group
             = f.label :assignee_id, "担当者"
-            = f.select :assignee_id, [[current_user.name, current_user.id]], {}, {class: "form-control"}
+            = f.select :assignee_id, project.members(project.user), {selected: card.assignee_id}, {class: "form-control"}
           .form-group
             = f.submit submit_label, class: "btn btn-outline-dark btn-block mt-4"
           - if card.persisted?
