@@ -1,7 +1,8 @@
 class Project < ApplicationRecord
   belongs_to :user
   has_many :columns, dependent: :destroy
-  has_many :cards, dependent: :destroy
+  has_many :cards,   dependent: :destroy
+  has_many :logs,    dependent: :destroy
 
   has_many :invitations, dependent: :destroy
   has_many :invitation_users, through: :invitations, source: :user
