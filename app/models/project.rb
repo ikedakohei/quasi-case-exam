@@ -26,8 +26,8 @@ class Project < ApplicationRecord
 
   def members(host_user)
     members = [[host_user.name, host_user.id]]
-    self.invitation_users.each.with_index(1) do |member, i|
-      members[i] = [member.name, member.id]
+    self.invitations.where(accept: true).each.with_index(1) do |invitation, i|
+      members[i] = [invitation.user.name, member.id]
     end
     members
   end
