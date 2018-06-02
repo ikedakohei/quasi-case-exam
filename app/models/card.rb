@@ -54,4 +54,14 @@ class Card < ApplicationRecord
                           self.project.columns.find_by(order: self.column.order_minus)
     self.update_attribute(:column_id, prev_or_next_column.id)
   end
+
+  def self.deadline_log
+    assignee_user = User.find(self.assignee_id)
+    cards = Card.where('deadline <= ?', Date.today)
+    cards.each do |card|
+      content = card.deadline.today? ? "#{assignee_user.name}さん、本日が#{name}カードの締切期限です。"
+                                     : "#{assignee_user.name}さん、#{name}カードの締切期限が過ぎています。"
+      Log.create!(content: content, image: assignee_user.image, project_id: project.id)
+    end
+  end
 end
