@@ -1,6 +1,6 @@
-- invitations.each do |invitation|
+- logs.each do |log|
   table
     tr
       td
-        = image_tag invitation.project.user.image, class: "rounded-circle invite-image my-1"
-        = "#{invitation.project.user.name}さんがXXXカードを移動しました"
+        = image_tag log.image, class: "rounded-circle invite-image my-1"
+        = log.content

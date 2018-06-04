@@ -1,9 +1,10 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:new, :create, :edit, :update, :destroy, :move]
-  before_action :my_project?, only: [:new, :create, :edit, :update, :destroy, :move]
-  before_action :set_column,  only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_card,    only: [:edit, :update, :destroy]
+  before_action :set_project,        only: [:new, :create, :edit, :update, :destroy, :move]
+  before_action :my_project?,        only: [:new, :create, :edit, :update, :destroy, :move]
+  before_action :set_column,         only: [:new, :create, :edit, :update, :destroy, :move]
+  before_action :set_card,           only: [:edit, :update, :destroy]
+  before_action :setting_log_writer, only: [:update, :destroy]
 
   def new
     @card = @column.cards.build
@@ -11,6 +12,7 @@ class CardsController < ApplicationController
 
   def create
     @card = @column.cards.build(card_params)
+    @card.set_log_writer(current_user)
     if @card.save
       redirect_to project_path(@project), notice: (I18n.t 'notice.create_card')
     else
@@ -40,6 +42,7 @@ class CardsController < ApplicationController
   # カードを移動
   def move
     card = Card.find(params[:card_id])
+    card.set_log_writer(current_user)
     card.move!(params[:right_or_left])
     redirect_to project_path(@project)
   end
@@ -60,6 +63,10 @@ class CardsController < ApplicationController
 
   def set_card
     @card = @column.cards.find(params[:id])
+  end
+
+  def setting_log_writer
+    @card.set_log_writer(current_user)
   end
 
   def my_project?

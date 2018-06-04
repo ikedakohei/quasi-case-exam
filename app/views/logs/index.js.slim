@@ -1,2 +1,2 @@
-| $('#logs').append("#{escape_javascript(render 'logs', invitations: @invitations)}");
-| $('#logs_morelink').replaceWith("#{escape_javascript(link_to_next_page(@invitations, ' もっと見る…', remote: true, id: 'logs_morelink', class: 'project-more fa fa-chevron-circle-down'))}");
+| $('#logs').append("#{escape_javascript(render 'logs', logs: @logs)}");
+| $('#logs_morelink').replaceWith("#{escape_javascript(link_to_next_page(@logs, ' もっと見る…', remote: true, id: 'logs_morelink', class: 'project-more fa fa-chevron-circle-down'))}");

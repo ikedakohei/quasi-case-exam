@@ -1,7 +1,8 @@
 class Project < ApplicationRecord
   belongs_to :user
   has_many :columns, dependent: :destroy
-  has_many :cards, dependent: :destroy
+  has_many :cards,   dependent: :destroy
+  has_many :logs,    dependent: :destroy
 
   has_many :invitations, dependent: :destroy
   has_many :invitation_users, through: :invitations, source: :user
@@ -21,5 +22,13 @@ class Project < ApplicationRecord
 
   def invited?(user)
     invitation_users.exists?(id: user.id)
+  end
+
+  def members(host_user)
+    members = [[host_user.name, host_user.id]]
+    self.invitations.where(accept: true).find_each.with_index(1) do |invitation, i|
+      members[i] = [invitation.user.name, invitation.user.id]
+    end
+    members
   end
 end

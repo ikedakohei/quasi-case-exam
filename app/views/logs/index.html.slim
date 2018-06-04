@@ -5,7 +5,7 @@
         h4.fa.fa-file-text-o.fa-lg
           = " ログ"
       .card-body.px-3#logs
-        = render 'logs', invitations: @invitations
+        = render 'logs', logs: @logs
       .card-footer.text-center.bg-white.border-top-0
-        = link_to_next_page @invitations, ' もっと見る…', remote: true,
+        = link_to_next_page @logs, ' もっと見る…', remote: true,
           id: 'logs_morelink', class: 'project-more fa fa-chevron-circle-down'
