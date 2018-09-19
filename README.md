@@ -1,6 +1,6 @@
 # KANBANアプリ
 
-デプロイ先
+デプロイ先  
 https://ikeda-quasi-case.herokuapp.com/
 
 DIVE INTO CODEの初級エンジニア認定プロジェクトに参加して作成したものです。  
