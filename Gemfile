@@ -22,7 +22,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
-gem 'carrierwave'
+gem 'carrierwave', '~> 1.2.2'
 gem 'cloudinary'
 gem 'kaminari'
 gem 'draper'
@@ -50,4 +50,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 source 'https://rubygems.org'
-ruby '2.5.0'
+ruby '2.6.3'
