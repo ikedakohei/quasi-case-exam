@@ -14,7 +14,7 @@ https://github.com/DiveintoCode-corp/quasi-case-exam/wiki
 webpacker導入（Sprocketsは使わない）したものの、ほぼjQueryしか使いませんでした（反省）。
 
 ## 採用技術
-- Ruby2.5
+- Ruby2.6
 - Rails5.1系
 - webpack
 - Postgresql
