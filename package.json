@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.6.0",
-    "bootstrap": "4.0.0-beta",
+    "bootstrap": "^4.3.1",
     "bootstrap4-datetimepicker": "^5.2.3",
     "expose-loader": "^0.7.5",
     "font-awesome": "^4.7.0",
