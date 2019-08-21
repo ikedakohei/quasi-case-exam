@@ -2,7 +2,7 @@
   "name": "quasi-case",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "^3.2.2",
+    "@rails/webpacker": "3.6.0",
     "bootstrap": "4.0.0-beta",
     "bootstrap4-datetimepicker": "^5.2.3",
     "expose-loader": "^0.7.5",
